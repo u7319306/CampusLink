@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeNav();
     }
   });
+  
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeLang(); closeNav(); }
   });
