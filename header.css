@@ -1,0 +1,76 @@
+h1{
+    font-size: 50px;
+    color: #484747;
+    padding-left: 5px;
+}
+
+.header {
+    padding: 20px;
+    background: #A1C5DA;
+}
+
+.actions {
+position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.icon-btn {
+    width: 50px; height: 50px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; background: transparent; cursor: pointer;
+  color: #484747;
+  border-radius: 8px;
+}
+
+.hamburger { 
+  display: inline-flex;
+  flex-direction: column;   /* stack bars vertically */
+  justify-content: center;
+  gap: 6px;                 /* space between bars */
+  width: 50px; height: 50px;
+  background: transparent; border: none; cursor: pointer;
+  color: #484747;
+}
+
+.hamburger span {
+width: 30px; height: 4px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+
+#langBtn { 
+    position: relative; 
+}
+
+.lang-menu {
+position: absolute;
+  top: 56px;      /* below the 50px button */
+  right: 0;       /* right-align with the globe */
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  padding: 6px;
+  display: none;
+  z-index: 2001;  /* above header/actions */
+}
+
+.lang-menu.open { 
+    display: block; 
+}
+
+.lang-menu button {
+  display:block; width:100%;
+  padding:8px 12px; background:transparent; border:none; text-align:left; cursor:pointer;
+}
+
+.lang-menu button:hover { 
+    background:#f3f6f8; 
+}
