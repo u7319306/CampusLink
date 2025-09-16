@@ -74,3 +74,23 @@ position: absolute;
 .lang-menu button:hover { 
     background:#f3f6f8; 
 }
+
+.sidenav {
+  position: fixed; top: 0; right: 0;
+  height: 100vh; width: 280px;
+  background: #484747; color: #fff;
+  opacity: 5;
+  padding-top: 60px;
+  transform: translateX(100%);      /* hidden off-screen to the right */
+  transition: transform .35s ease;  /* slide animation */
+  z-index: 2000;
+}
+.sidenav.open {
+  transform: translateX(0);         /* slide in */
+}
+
+.sidenav a { padding: 8px 16px 8px 32px; color: #bbb; text-decoration: none; display: block; }
+.sidenav a:hover { color: #fff; }
+.sidenav .closebtn { position: absolute; top: 0; right: 16px; font-size: 36px; }
+
+#main { transition: margin-right .35s ease; }
