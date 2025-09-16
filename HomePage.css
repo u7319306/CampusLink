@@ -11,13 +11,17 @@
 .quicklinks h2 { margin: 0 0 12px; text-align: center; color: #484747; }
 .ql-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-items: center;
+  align-items: start;
 }
 .imgtext-container {
-  padding: 0; /* you can keep your old padding if you prefer */
-  display: flex; justify-content: center;
+width: clamp(200px, 28vw, 300px);
+  height: auto;
+  display: block;
 }
+
+img { max-width: 100%; height: auto; }
 
 /* News panel/card */
 .news {
