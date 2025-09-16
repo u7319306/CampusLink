@@ -1,0 +1,90 @@
+   <!DOCTYPE html>
+    <html style="font-family: DM Sans;" lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="homepage.css">
+            <script src="translations.js" defer></script>
+
+    </head>
+    <body>
+        <div class="header">
+            <h1 data-i18n="title">CampusLink</h1>
+           <div class="actions">
+
+  <button class="icon-btn" aria-haspopup="true" aria-expanded="false" id="langBtn" aria-label="Change language">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </button>
+
+  <div class="lang-menu" id="langMenu" role="menu" aria-label="Languages">
+    <button role="menuitem" data-lang="en">English</button>
+    <button role="menuitem" data-lang="es">Español</button>
+    <button role="menuitem" data-lang="zh">中文</button>
+    <button role="menuitem" data-lang="fr">Français</button>
+  </div>
+
+  <button class="hamburger icon-btn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</div>
+
+
+<main class="main">
+  <!-- LEFT: Quick Links -->
+  <section class="quicklinks">
+    <h2 data-i18n="quickLinks">Quick Links</h2>
+
+    <div class="ql-grid">
+      <div class="imgtext-container">
+        <a href="https://selfservice.sas.anu.edu.au/psc/sscsprod/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL">
+          <img id="hub" src="images/AnuHub.png" alt="hub" width="300" height="300">
+        </a>
+      </div>
+
+      <div class="imgtext-container">
+        <a href="https://canvas.anu.edu.au/">
+          <img id="canvas" src="images/Canvas.png" alt="canvas" width="300" height="300">
+        </a>
+      </div>
+
+      <div class="imgtext-container">
+        <a href="https://mytimetable.anu.edu.au/odd/student?ss=eba7df0aeff1496a8f861ea3182278d0">
+          <img id="timetable" src="images/Timetable.png" alt="timetable" width="300" height="300">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: News bulletin -->
+  <aside class="news">
+    <h2 data-i18n="news">News</h2>
+    <ul class="news-list">
+      <li>
+        <a href="#">Semester 2 census date approaching</a>
+        <p>Make sure your enrolment is finalised before the deadline.</p>
+        <time datetime="2025-09-20">20 Sep 2025</time>
+      </li>
+      <li>
+        <a href="#">Library extended hours</a>
+        <p>Chifley and Hancock open late during exam period.</p>
+        <time datetime="2025-10-01">1 Oct 2025</time>
+      </li>
+      <li>
+        <a href="#">Careers fair this week</a>
+        <p>Meet employers on campus; bring your resume.</p>
+        <time datetime="2025-09-25">25 Sep 2025</time>
+      </li>
+    </ul>
+  </aside>
+</main>
+
+    </body>
+    </html>

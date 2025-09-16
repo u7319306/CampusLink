@@ -1,0 +1,121 @@
+h1{
+    font-size: 50px;
+    color: #484747;
+    padding-left: 5px;
+}
+
+.header {
+    padding: 20px;
+    background: #A1C5DA;
+}
+
+
+.actions {
+position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 1000;
+}
+
+#globe { display: block; 
+  width: 30px; height: 30px;}
+
+.icon-btn {
+    width: 50px; height: 50px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; background: transparent; cursor: pointer;
+  color: #484747;
+  border-radius: 8px;
+}
+
+.hamburger { 
+  display: inline-flex;
+  flex-direction: column;   /* stack bars vertically */
+  justify-content: center;
+  gap: 6px;                 /* space between bars */
+  width: 50px; height: 50px;
+  background: transparent; border: none; cursor: pointer;
+  color: #484747;
+}
+
+.hamburger span {
+width: 30px; height: 4px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+
+.container1 {
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+}
+
+
+/* Layout: 2 columns, halves */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* left half / right half */
+  gap: 32px;
+  align-items: start;
+  padding: 24px;
+}
+
+/* Quick Links grid (your three tiles) */
+.quicklinks h2 { margin: 0 0 12px; text-align: center; color: #484747; }
+.ql-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.imgtext-container {
+  padding: 0; /* you can keep your old padding if you prefer */
+  display: flex; justify-content: center;
+}
+
+/* News panel/card */
+.news {
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.news h2 { margin: 0 0 12px; color: #484747; text-align: left; }
+.news-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.news-list li { border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.news-list li:last-child { border-bottom: none; }
+.news-list a { font-weight: 600; color: #2b2b2b; text-decoration: none; }
+.news-list a:hover { text-decoration: underline; }
+.news-list p { margin: 4px 0 6px; color: #555; }
+.news-list time { font-size: 0.85rem; color: #777; display: block; }
+
+/* Responsive: stack on small screens */
+@media (max-width: 900px) {
+  .main { grid-template-columns: 1fr; }
+  .ql-grid { grid-template-columns: 1fr; } /* one tile per row; adjust as you like */
+}
+
+#langBtn { position: relative; }
+
+.lang-menu {
+position: absolute;
+  top: 56px;      /* below the 50px button */
+  right: 0;       /* right-align with the globe */
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  padding: 6px;
+  display: none;
+  z-index: 2001;  /* above header/actions */
+}
+.lang-menu.open { display: block; }
+.lang-menu button {
+  display:block; width:100%;
+  padding:8px 12px; background:transparent; border:none; text-align:left; cursor:pointer;
+}
+.lang-menu button:hover { background:#f3f6f8; }
