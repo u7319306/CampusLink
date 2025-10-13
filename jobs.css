@@ -1,0 +1,28 @@
+.careers{
+    color: #484747;
+    text-align: center; 
+
+}
+
+.careers a {
+    color: #484747;  
+  font-weight: 600;
+  margin-left: 8px;  
+  text-decoration: underline;
+  text-align: center; 
+}
+
+.job-types{
+    position: relative; 
+    margin: 40px auto; 
+    max-width: 1300px; 
+    margin-top: 40px;
+    padding: 40px;
+  background: #c7e1ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.job-types p, .job-types h3, .job-types h2{
+    color: #484747;  
+}
