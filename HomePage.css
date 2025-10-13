@@ -37,6 +37,11 @@
   display: block;
 }
 
+.imgtext-container:hover {
+  transform: translateY(-6px);                   /* Slight upward lift */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);    /* Add a shadow for depth */
+}
+
 /* Make images responsive */
 img {
   max-width: 100%;                             /* Prevent overflow */
@@ -125,7 +130,7 @@ img {
 
 .map-wrapper {
   margin: 10px;
-  padding: 5px;
+  padding: 20px;
   background: #f7fbfc;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -144,5 +149,52 @@ img {
 .map-wrapper a:hover {
   text-decoration: underline;
 }
+
+/* ===============================
+   ACADEMIC COLLEGES SECTION
+=============================== */
+
+.colleg-direc {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+}
+
+.colleg-direc h2 {
+  color: #484747;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Container for buttons */
+.college-buttons {
+  display: flex;
+  flex-direction: column;               /* Stack buttons vertically */
+  align-items: center;
+  flex-wrap: wrap;                      /* Wrap buttons to new lines on small screens */
+  justify-content: center;              /* Center align all buttons */
+  gap: 12px;                            /* Space between buttons */
+}
+
+/* Individual button style */
+.college-buttons a {
+  display: block;
+  background-color: #A1C5DA;            /* Light blue button */
+  color: #fff;                          /* White text */
+  padding: 22px 18px;
+  width: 600px;
+  border-radius: 8px;                   /* Rounded corners */
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.college-buttons a:hover {
+  background-color: #8ab8d1;            /* Slightly darker blue on hover */
+  transform: translateY(-2px);          /* Lift effect */
+}
+
+
 
 
