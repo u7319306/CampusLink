@@ -1,49 +1,148 @@
-/* Layout: 2 columns, halves */
+/* ===============================
+   MAIN LAYOUT
+   Two-column layout: Quick Links (left) and News (right)
+=============================== */
+
 .main {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* left half / right half */
-  gap: 32px;
-  align-items: start;
-  padding: 24px;
+  display: grid;                                /* Use grid layout for flexible columns */
+  grid-template-columns: 1fr 1fr;               /* Two equal halves: left/right */
+  gap: 32px;                                   /* Space between columns */
+  align-items: start;                           /* Align items to the top of each column */
+  padding: 24px;                                /* Space around the grid area */
 }
 
-/* Quick Links grid (your three tiles) */
-.quicklinks h2 { margin: 0 0 12px; text-align: center; color: #484747; }
+/* ===============================
+   QUICK LINKS SECTION
+=============================== */
+
+/* Section title */
+.quicklinks h2 {
+  margin: 0 0 12px;                            /* Space below heading */
+  text-align: center;                          /* Center title text */
+  color: #484747;                              /* Dark grey color for text */
+}
+
+/* Grid of quick-link icons (Canvas, Wattle, etc.) */
 .ql-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  justify-items: center;
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Responsive grid layout */
+  justify-items: center;                       /* Center tiles horizontally */
+  align-items: start;                          /* Align tiles to top */
 }
+
+/* Individual link container (image + link area) */
 .imgtext-container {
-width: clamp(200px, 28vw, 300px);
+  width: clamp(200px, 28vw, 300px);            /* Responsive width between 200–300px */
   height: auto;
   display: block;
 }
 
-img { max-width: 100%; height: auto; }
-
-/* News panel/card */
-.news {
-  background: #fff;
-  border: 1px solid #d0d0d0;
-  border-radius: 12px;
-  padding: 16px 18px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+/* Make images responsive */
+img {
+  max-width: 100%;                             /* Prevent overflow */
+  height: auto;                                /* Maintain aspect ratio */
 }
-.news h2 { margin: 0 0 12px; color: #484747; text-align: left; }
-.news-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.news-list li { border-bottom: 1px solid #eee; padding-bottom: 10px; }
-.news-list li:last-child { border-bottom: none; }
-.news-list a { font-weight: 600; color: #2b2b2b; text-decoration: none; }
-.news-list a:hover { text-decoration: underline; }
-.news-list p { margin: 4px 0 6px; color: #555; }
-.news-list time { font-size: 0.85rem; color: #777; display: block; }
 
-/* Responsive: stack on small screens */
+/* ===============================
+   NEWS SECTION (Right Panel)
+=============================== */
+
+/* Card-style container for news */
+.news {
+  background: #fff;                            /* White card background */
+  border: 1px solid #d0d0d0;                   /* Light grey border */
+  border-radius: 12px;                         /* Rounded corners */
+  padding: 16px 18px;                          /* Internal spacing */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);      /* Soft drop shadow for elevation */
+}
+
+/* News heading */
+.news h2 {
+  margin: 0 0 12px;
+  color: #484747;
+  text-align: left;
+}
+
+/* List container for news items */
+.news-list {
+  list-style: none;                            /* Remove bullets */
+  margin: 0;
+  padding: 0;
+  display: grid;                               /* Stack items vertically */
+  gap: 14px;                                   /* Space between news items */
+}
+
+/* Each individual news item */
+.news-list li {
+  border-bottom: 1px solid #eee;               /* Separator line */
+  padding-bottom: 10px;                        /* Spacing below each item */
+}
+
+/* Remove line from last item */
+.news-list li:last-child {
+  border-bottom: none;
+}
+
+/* Headline links */
+.news-list a {
+  font-weight: 600;                            /* Bold headlines */
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+/* Add underline on hover */
+.news-list a:hover {
+  text-decoration: underline;
+}
+
+/* News description paragraph */
+.news-list p {
+  margin: 4px 0 6px;
+  color: #555;                                 /* Medium grey text */
+}
+
+/* Timestamp */
+.news-list time {
+  font-size: 0.85rem;
+  color: #777;                                 /* Lighter grey for secondary info */
+  display: block;                              /* Ensure it starts on a new line */
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   Stack columns on smaller screens
+=============================== */
+
 @media (max-width: 900px) {
-  .main { grid-template-columns: 1fr; }
-  .ql-grid { grid-template-columns: 1fr; } /* one tile per row; adjust as you like */
+  .main {
+    grid-template-columns: 1fr;                /* Collapse to one column layout */
+  }
+
+  .ql-grid {
+    grid-template-columns: 1fr;                /* One quick-link tile per row */
+  }
+}
+
+.map-wrapper {
+  margin: 10px;
+  padding: 5px;
+  background: #f7fbfc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.map-wrapper h2, p, a{
+  color: #484747;  
+}
+
+.map-wrapper a {
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 2px;          /* Small gap between text and link */
+}
+
+.map-wrapper a:hover {
+  text-decoration: underline;
 }
 
 

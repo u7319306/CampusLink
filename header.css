@@ -68,15 +68,18 @@ h1 {
    LANGUAGE DROPDOWN MENU
 ===================== */
 
-#langBtn {
-  position: relative;  /* So dropdown positions relative to this */
+/* Wrapper for button + dropdown */
+.lang-wrapper {
+  position: relative; /* Makes .lang-menu position relative to this */
+  display: inline-block;
 }
 
 /* Dropdown menu styling */
 .lang-menu {
   position: absolute;
-  top: 56px;               /* Appears below the language button */
-  right: 0;                /* Right-aligns with the globe */
+  top: 100%;               /* Appears below the language button */
+  right: 0;
+  margin-top: 6px;                /* Right-aligns with the globe */
   background: #fff;        /* White dropdown box */
   border: 1px solid #d0d0d0;
   border-radius: 8px;      /* Smooth corners */

@@ -16,6 +16,11 @@
   <link rel="stylesheet" href="homepage.css">
   <link rel="stylesheet" href="header.css">
 
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
   <!-- Language translation script -->
   <script src="translations.js" defer></script>
 
@@ -32,7 +37,8 @@
     <!-- Header actions: Language button, Search bar, and Menu button -->
     <div class="actions">
 
-      <!-- 🌐 Language button -->
+      <!-- 🌐 Language button and menu -->
+       <div class="lang-wrapper">
       <button class="icon-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
         <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
@@ -40,6 +46,14 @@
             stroke-width="2" />
         </svg>
       </button>
+
+      <div class="lang-menu" id="langMenu" role="menu" aria-label="Languages">
+        <button role="menuitem" data-lang="en">English</button>
+        <button role="menuitem" data-lang="es">Español</button>
+        <button role="menuitem" data-lang="zh">中文</button>
+        <button role="menuitem" data-lang="fr">Français</button>
+      </div>
+      </div>
 
       <!-- 🔍 Search bar -->
       <div class="group">
@@ -56,14 +70,6 @@
         </svg>
         <!-- Search input -->
         <input placeholder="Search" type="search" class="input">
-      </div>
-
-      <!-- 🌐 Dropdown menu for language selection -->
-      <div class="lang-menu" id="langMenu" role="menu" aria-label="Languages">
-        <button role="menuitem" data-lang="en">English</button>
-        <button role="menuitem" data-lang="es">Español</button>
-        <button role="menuitem" data-lang="zh">中文</button>
-        <button role="menuitem" data-lang="fr">Français</button>
       </div>
 
       <!-- ☰ Hamburger menu button -->
@@ -148,8 +154,30 @@
           <p>Meet employers on campus; bring your resume.</p>
           <time datetime="2025-09-25">25 Sep 2025</time>
         </li>
+        <li>
+          <a href="https://www.anu.edu.au/news/all-news/nature-inspires-anu-tech-to-help-recover-trillions-of-dollars-in-critical-resources">Nature inspires ANU tech to help recover trillions of dollars in critical resources</a>
+          <p>An advanced filtration system inspired by nature.</p>
+          <time datetime="2025-09-25">09 Oct 2025</time>
+        </li>
+        <li>
+          <a href="https://www.anu.edu.au/news/all-news/message-from-the-chancellor">Message from the Chancellor</a>
+          <p>An important message.</p>
+          <time datetime="2025-09-25">11 Sep 2025</time>
+        </li>
+        <li>
+          <a href="https://www.anu.edu.au/news/all-news/anu-community-meeting">ANU Community Meeting</a>
+          <p>News Highlight!</p>
+          <time datetime="2025-09-25">18 Sep 2025</time>
+        </li>
       </ul>
     </aside>
+    <div class ="map-wrapper">
+    <h2>Need help with navigation on campus?</h2>
+    <div id="map" style="height: 400px;"></div>
+    <p>For an alternative map, visit:
+    <a href="https://studentvip.com.au/anu/main/maps">Lost On Campus</a>
+    </p>
+    </div>
   </main>
 </body>
 

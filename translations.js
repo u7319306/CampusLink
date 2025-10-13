@@ -150,4 +150,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+    /* ========================================
+     CAMPUS MAP SECTION (Leaflet.js)
+  ======================================== */
+
+  // Make sure a map container exists before initializing (so it doesn’t run on other pages)
+  const mapContainer = document.getElementById("map");
+  if (mapContainer) {
+    // Create the map and set the initial view to ANU Acton coordinates
+    const map = L.map('map').setView([-35.2777, 149.1185], 15); // [lat, lon], zoom level
+
+    // Add the OpenStreetMap tile layer (the actual map tiles)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Markers for ANU buildings
+    const buildings = [
+      { name: "Chifley Library", lat: -35.2775560871438, lon:  149.12057360026606 },
+      { name: "Manning Clark Centre", lat: -35.27661373305906, lon: 149.12270914393082 },
+      { name: "Menzies Library", lat: -35.28202390521654, lon: 149.1181715965589 },
+      { name: "Fellows Oval", lat: -35.27860711641909, lon: 149.11943634362598 },
+      { name: "Hancock Library", lat: -35.27709314459486, lon: 149.1183454867746 },
+      { name: "Law Library", lat: -35.28090340734622, lon: 149.11883273705394 }
+    ];
+
+    // Loop through the list and create markers for each building
+    buildings.forEach(b => {
+      L.marker([b.lat, b.lon])
+        .addTo(map)
+        .bindPopup(`<b>${b.name}</b>`);
+    });
+  }
+
 });
