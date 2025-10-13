@@ -94,3 +94,40 @@ position: absolute;
 .sidenav .closebtn { position: absolute; top: 0; right: 16px; font-size: 36px; }
 
 #main { transition: margin-right .35s ease; }
+
+/* From Uiverse.io by alexruix */ 
+.group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+}
+
+.input {
+  height: 30px;
+  padding: 0 1rem;
+  width: 100%;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: white;
+  color: #0d0c22;
+  box-shadow: 0 0 5px #A1C5DA, 0 0 0 10px #A1C5DA;
+  transition: .3s ease;
+}
+
+.input::placeholder {
+  color: #777;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;    
+  left: 0.8rem;  
+  fill: #777;
+  width: 1rem;
+  height: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

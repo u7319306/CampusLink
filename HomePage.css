@@ -45,3 +45,5 @@ img { max-width: 100%; height: auto; }
   .main { grid-template-columns: 1fr; }
   .ql-grid { grid-template-columns: 1fr; } /* one tile per row; adjust as you like */
 }
+
+
