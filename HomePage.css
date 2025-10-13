@@ -156,8 +156,7 @@ img {
 
 .colleg-direc {
   text-align: center;
-  margin: 30px 0;
-  padding: 20px;
+  margin: 10px 0;
 }
 
 .colleg-direc h2 {
@@ -195,6 +194,149 @@ img {
   transform: translateY(-2px);          /* Lift effect */
 }
 
+/* ===============================
+   NOTICEBOARD SECTION
+=============================== */
+.noticeboard {
+  position: relative; 
+  background-color: #e3e3e3;
+  margin: 20px auto;
+  padding: 20px;               /* Inner spacing */
+  border-radius: 12px;         /* Rounded edges (optional) */
+  max-width: 1200px;           /* ✅ Limit total width */
+  margin: 40px auto; 
+}
 
+/* Reset margins and paddings only inside .noticeboard */
+.noticeboard * {
+  margin: 0;
+  padding: 0;
+}
 
+/* Title styling */
+.noticeboard h2 {
+  font-weight: bold;
+  font-size: 2rem;
+}
 
+/* Paragraph text inside each note */
+.noticeboard p {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/* Remove bullets for lists */
+.noticeboard ul,
+.noticeboard li {
+  list-style: none;
+}
+
+/* Flexbox layout for notes */
+.noticeboard ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: none; 
+}
+
+/* Noticeboard cards */
+.noticeboard li {
+  margin: 1em;
+}
+
+/* Anchor link inside each note (acts as the clickable note card) */
+.noticeboard a {
+  text-decoration: none;
+  color: #484747; 
+  background-color: #bcd6e3; 
+  display: block;
+  height: 14em;
+  width: 14em;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: rotate(-1.5deg);
+}
+
+.noticeboard li:nth-child(even) a {
+  transform: rotate(1.5deg);
+  background: rgb(243, 195, 203);
+}
+
+.noticeboard li:nth-child(3n) a{
+  background:rgb(174, 203, 174);
+}
+
+/* Hover effect for each note */
+.noticeboard a:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.noticeboard li:nth-child(even) a:hover{
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(-4px);
+}
+
+h3{
+  color: #484747; 
+  text-align: center;
+  margin-top: 80px;
+  font-size: 3rem;
+}
+
+/* Top-left tape */
+.noticeboard::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 80px;
+  height: 80px;
+  background-image: url("images/tape.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(-10deg);
+  z-index: 2;
+}
+
+/* Top-right tape */
+.noticeboard::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  background-image: url("images/tape.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(90deg);
+  z-index: 2;
+}
+
+/* Bottom corners using extra child elements */
+.noticeboard .tape-bottom-left,
+.noticeboard .tape-bottom-right {
+  position: absolute;
+  bottom: -30px;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* Left and right specific settings */
+.noticeboard .tape-bottom-left {
+  left: -30px;
+  background-image: url("images/tape.png");
+  transform: rotate(90deg);
+}
+
+.noticeboard .tape-bottom-right {
+  right: -30px;
+  background-image: url("images/tape.png");
+  transform: rotate(-5deg);
+}
