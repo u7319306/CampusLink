@@ -86,14 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidenav  = document.getElementById("mySidenav"); // Side navigation container
   const menuBtn  = document.getElementById("menuBtn");   // Hamburger button
   const closeBtn = sidenav?.querySelector(".closebtn");  // “×” button inside sidenav
-  const main     = document.getElementById("main");      // Optional: shift main content when nav opens
 
   // Open navigation drawer
   function openNav() {
     sidenav?.classList.add("open");
     menuBtn?.setAttribute("aria-expanded", "true");
     sidenav?.setAttribute("aria-hidden", "false");
-    if (main) main.style.marginRight = "280px";  // Match sidenav width
   }
 
   // Close navigation drawer
@@ -101,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sidenav?.classList.remove("open");
     menuBtn?.setAttribute("aria-expanded", "false");
     sidenav?.setAttribute("aria-hidden", "true");
-    if (main) main.style.marginRight = "0";
   }
 
   // Toggle drawer open/close
