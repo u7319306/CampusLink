@@ -340,3 +340,102 @@ h3{
   background-image: url("images/tape.png");
   transform: rotate(-5deg);
 }
+
+/* ===============================
+   FEEDBACK SECTION
+=============================== */
+.feedback-section {
+  background: #f7fbfc;
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 3px solid #A1C5DA;
+  margin-top: 80px;
+}
+
+.feedback-section h2 {
+  color: #484747;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.feedback-section p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #484747;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.feedback-form button {
+  background-color: #A1C5DA;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feedback-form button:hover {
+  background-color: #8ab8d1;
+}
+
+/* ===============================
+   FOOTER SECTION
+=============================== */
+.anu-footer {
+  background-color: #484747;
+  color: #fff;
+  padding: 40px 20px;
+  border-top: 4px solid #A1C5DA;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+.footer-left p{
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #666;
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.footer-bottom p{
+  color: #fff;
+}

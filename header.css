@@ -199,3 +199,44 @@ h1 {
   transform: translateY(-50%); /* Perfect vertical centering */
   pointer-events: none;     /* Allows clicking through the icon */
 }
+
+/* ===============================
+   FOOTER SECTION
+=============================== */
+.anu-footer {
+  background-color: #484747;
+  color: #fff;
+  padding: 40px 20px;
+  border-top: 4px solid #A1C5DA;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+.footer-left p{
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #666;
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.footer-bottom p{
+  color: #fff;
+}
