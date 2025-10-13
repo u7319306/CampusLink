@@ -1,133 +1,198 @@
-h1{
-    font-size: 50px;
-    color: #484747;
-    padding-left: 5px;
+/* =====================
+   GENERAL STYLING
+===================== */
+
+/* Main title styling */
+h1 {
+  font-size: 50px;        /* Large heading size */
+  color: #484747;         /* Dark grey color for text */
+  padding-left: 5px;      /* Slight spacing from the left edge */
 }
 
+/* Header bar styling */
 .header {
-    padding: 20px;
-    background: #A1C5DA;
+  padding: 20px;          /* Space inside the header */
+  background: #A1C5DA;    /* Light blue background color */
 }
+
+/* =====================
+   TOP-RIGHT ACTION BUTTONS (Language + Hamburger)
+===================== */
 
 .actions {
-position: fixed;
-  top: 12px;
-  right: 12px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  z-index: 1000;
+  position: fixed;         /* Stays in place while scrolling */
+  top: 12px;               /* Distance from top of the page */
+  right: 12px;             /* Distance from right edge */
+  display: flex;           /* Arrange items horizontally */
+  gap: 10px;               /* Space between buttons */
+  align-items: center;     /* Vertically center items */
+  z-index: 1000;           /* Ensures it's above other elements */
 }
 
-
+/* Generic icon button (e.g. globe icon) */
 .icon-btn {
-    width: 50px; height: 50px;
-  display: inline-flex; align-items: center; justify-content: center;
-  border: none; background: transparent; cursor: pointer;
-  color: #484747;
-  border-radius: 8px;
+  width: 50px; height: 50px;              /* Uniform size */
+  display: inline-flex;                   /* Centers the icon */
+  align-items: center; justify-content: center;
+  border: none;                           /* Remove default border */
+  background: transparent;                /* Transparent background */
+  cursor: pointer;                        /* Hand cursor on hover */
+  color: #484747;                         /* Icon color */
+  border-radius: 8px;                     /* Rounded corners */
 }
 
-.hamburger { 
+/* =====================
+   HAMBURGER MENU ICON
+===================== */
+
+.hamburger {
   display: inline-flex;
-  flex-direction: column;   /* stack bars vertically */
-  justify-content: center;
-  gap: 6px;                 /* space between bars */
+  flex-direction: column;   /* Stack bars vertically */
+  justify-content: center;  /* Center bars vertically */
+  gap: 6px;                 /* Space between bars */
   width: 50px; height: 50px;
-  background: transparent; border: none; cursor: pointer;
-  color: #484747;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #484747;           /* Use same color as other icons */
 }
 
+/* Hamburger menu bars */
 .hamburger span {
-width: 30px; height: 4px;
-  background: currentColor;
-  border-radius: 2px;
+  width: 30px; height: 4px; /* Size of each bar */
+  background: currentColor; /* Inherits color from parent */
+  border-radius: 2px;       /* Slightly rounded ends */
 }
 
+/* =====================
+   LANGUAGE DROPDOWN MENU
+===================== */
 
-#langBtn { 
-    position: relative; 
+#langBtn {
+  position: relative;  /* So dropdown positions relative to this */
 }
 
+/* Dropdown menu styling */
 .lang-menu {
-position: absolute;
-  top: 56px;      /* below the 50px button */
-  right: 0;       /* right-align with the globe */
-  background: #fff;
+  position: absolute;
+  top: 56px;               /* Appears below the language button */
+  right: 0;                /* Right-aligns with the globe */
+  background: #fff;        /* White dropdown box */
   border: 1px solid #d0d0d0;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  border-radius: 8px;      /* Smooth corners */
+  box-shadow: 0 6px 20px rgba(0,0,0,.08); /* Soft shadow */
   padding: 6px;
-  display: none;
-  z-index: 2001;  /* above header/actions */
+  display: none;           /* Hidden by default */
+  z-index: 2001;           /* Above other header elements */
 }
 
-.lang-menu.open { 
-    display: block; 
+/* Display the menu when opened */
+.lang-menu.open {
+  display: block;
 }
 
+/* Buttons inside the dropdown */
 .lang-menu button {
-  display:block; width:100%;
-  padding:8px 12px; background:transparent; border:none; text-align:left; cursor:pointer;
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
 }
 
-.lang-menu button:hover { 
-    background:#f3f6f8; 
+/* Hover effect for dropdown options */
+.lang-menu button:hover {
+  background: #f3f6f8; /* Light grey highlight */
 }
+
+/* =====================
+   SIDE NAVIGATION MENU
+===================== */
 
 .sidenav {
-  position: fixed; top: 0; right: 0;
-  height: 100vh; width: 280px;
+  position: fixed;
+  top: 0; right: 0;
+  height: 100vh; width: 280px;    /* Full height, fixed width */
   background: #484747; color: #fff;
-  opacity: 5;
-  padding-top: 60px;
-  transform: translateX(100%);      /* hidden off-screen to the right */
-  transition: transform .35s ease;  /* slide animation */
+  opacity: 5;                     /* (Typo-safe but usually should be 1) */
+  padding-top: 60px;              /* Spacing from top */
+  transform: translateX(100%);    /* Start off-screen to the right */
+  transition: transform .35s ease;/* Smooth slide animation */
   z-index: 2000;
 }
+
+/* When open, slide the menu into view */
 .sidenav.open {
-  transform: translateX(0);         /* slide in */
+  transform: translateX(0);
 }
 
-.sidenav a { padding: 8px 16px 8px 32px; color: #bbb; text-decoration: none; display: block; }
-.sidenav a:hover { color: #fff; }
-.sidenav .closebtn { position: absolute; top: 0; right: 16px; font-size: 36px; }
+/* Links inside the side navigation */
+.sidenav a {
+  padding: 8px 16px 8px 32px;
+  color: #bbb;
+  text-decoration: none;
+  display: block;
+}
 
-#main { transition: margin-right .35s ease; }
+/* Hover effect for side navigation links */
+.sidenav a:hover {
+  color: #fff;
+}
 
-/* From Uiverse.io by alexruix */ 
+/* Close button in the sidenav */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0; right: 16px;
+  font-size: 36px;
+}
+
+/* Smooth transition for main content when sidenav opens */
+#main {
+  transition: margin-right .35s ease;
+}
+
+/* =====================
+   SEARCH BOX STYLING
+   (From Uiverse.io by alexruix)
+===================== */
+
+/* Search input container */
 .group {
   display: flex;
   align-items: center;
-  position: relative;
-  max-width: 190px;
+  position: relative;  /* Needed for icon positioning */
+  max-width: 190px;    /* Restrict search box width */
 }
 
+/* Search input field */
 .input {
   height: 30px;
   padding: 0 1rem;
   width: 100%;
-  padding-left: 2.5rem;
+  padding-left: 2.5rem;       /* Leaves space for the icon inside */
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
-  background-color: white;
-  color: #0d0c22;
-  box-shadow: 0 0 5px #A1C5DA, 0 0 0 10px #A1C5DA;
-  transition: .3s ease;
+  background-color: white;    /* White background for the input */
+  color: #0d0c22;             /* Dark text color */
+  box-shadow: 0 0 5px #A1C5DA, 0 0 0 10px #A1C5DA; /* Soft blue glow */
+  transition: .3s ease;       /* Smooth visual transition */
 }
 
+/* Placeholder text styling */
 .input::placeholder {
-  color: #777;
+  color: #777;  /* Muted grey placeholder text */
 }
 
+/* Magnifying glass icon inside the input box */
 .icon {
   position: absolute;
-  top: 50%;    
-  left: 0.8rem;  
-  fill: #777;
-  width: 1rem;
-  height: 1rem;
-  transform: translateY(-50%);
-  pointer-events: none;
+  top: 50%;                 /* Vertically center the icon */
+  left: 0.8rem;             /* Slight padding from left edge */
+  fill: #777;               /* Grey color for the icon */
+  width: 1rem; height: 1rem;/* Icon size */
+  transform: translateY(-50%); /* Perfect vertical centering */
+  pointer-events: none;     /* Allows clicking through the icon */
 }
