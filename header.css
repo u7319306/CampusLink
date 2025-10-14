@@ -6,13 +6,21 @@
 h1 {
   font-size: 50px;        /* Large heading size */
   color: #484747;         /* Dark grey color for text */
-  padding-left: 5px;      /* Slight spacing from the left edge */
 }
 
 /* Header bar styling */
 .header {
-  padding: 20px;          /* Space inside the header */
-  background: #A1C5DA;    /* Light blue background color */
+  display: flex;                 /* Enables horizontal alignment */
+  align-items: center;           /* Vertically centers text and image */
+  gap: 20px;                     /* Adds space between CampusLink and the owl */
+  padding: 20px;
+  background: #A1C5DA;           /* Light blue background color */
+}
+
+.header img{
+    width: 97px;
+    height: 130px;
+    padding-left: 5px;
 }
 
 /* =====================
