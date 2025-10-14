@@ -1,6 +1,6 @@
 .careers{
     color: #484747;
-    text-align: center; 
+    margin-left: 20px;
 
 }
 
@@ -25,4 +25,218 @@
 
 .job-types p, .job-types h3, .job-types h2{
     color: #484747;  
+}
+
+.icon-container img {
+      height: 200px;
+  width: 200px;
+  margin-bottom: 10px;            /* Adds space between image and text */
+}
+
+.icon-container {
+display: flex;                  /* Enables horizontal layout */
+  justify-content: center;        /* Centers all icons horizontally */
+  align-items: flex-start;        /* Aligns them along the top */
+  gap: 40px;                      /* Adds spacing between each icon group */
+  text-align: center;             /* Centers text under each icon */
+  flex-wrap: wrap;                /* ✅ Allows wrapping on smaller screens */
+  margin-top: 40px;
+}
+
+.intro p {
+    color: #484747;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2em;
+}
+
+.resume p, .jobs p, .query p {
+    text-align: center;
+    margin-top: 10px;
+      margin: 0;
+  color: #484747;
+}
+
+.other-jobs p {
+    margin-left: 20px;
+    color: #484747;
+    font-size: 1.3em;
+}
+
+.img-container {
+  display: flex;                  /* Makes cards line up horizontally */
+  justify-content: space-between;        /* Centers them */
+  align-items: stretch;           /* ✅ Ensures all cards are the same height */
+  gap: 20px;                      /* Adds spacing between cards */
+  flex-wrap: nowrap;                /* Allows wrapping on small screens */
+  margin: 40px auto;
+  max-width: 1500px;
+}
+
+.img-container img {
+    height: 100px;
+    width: 100px;
+}
+
+.img-container h2, .img-container p {
+    color: #484747;
+}
+
+.internship, .grad, .cadet, .vacation {
+    border: 2px solid #484747;   /* sets border thickness, style, and color */
+    border-radius: 8px;          /* smooth rounded corners */
+    padding: 15px;               /* space between border and content */
+    text-align: center;          /* keep text and image centered */
+    width: 320px;                /* consistent width for all boxes */
+    margin: 20px auto;           /* center horizontally with spacing */
+    background-color: white;     /* optional: make background stand out */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* optional subtle shadow */
+}
+
+.img-container p {
+    font-size: 1em;
+    line-height: 1.3;
+
+}
+
+.job-sites {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.job-sites h2 {
+  color: #484747;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Container for buttons */
+.job-sites {
+  display: flex;
+  flex-direction: column;               /* Stack buttons vertically */
+  align-items: center;
+  flex-wrap: wrap;                      /* Wrap buttons to new lines on small screens */
+  justify-content: center;              /* Center align all buttons */
+  gap: 12px;                            /* Space between buttons */
+}
+
+/* Individual button style */
+.job-sites a {
+  display: block;
+  background-color: #A1C5DA;            /* Light blue button */
+  color: #fff;                          /* White text */
+  padding: 22px 18px;
+  width: 500px;
+  border-radius: 8px;                   /* Rounded corners */
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.job-sites a:hover {
+  background-color: #8ab8d1;            /* Slightly darker blue on hover */
+  transform: translateY(-2px);          /* Lift effect */
+}
+
+.left-right-contain {
+  display: grid;                                /* Use grid layout for flexible columns */
+  grid-template-columns: 1fr 1fr;               /* Two equal halves: left/right */
+  gap: 32px;                                   /* Space between columns */
+  align-items: start;                           /* Align items to the top of each column */
+  padding: 24px;                                /* Space around the grid area */
+}
+
+.linked-in{
+    text-align: center;
+}
+
+.linked-in img {
+    width: 300px;
+    height: 150px;
+    margin: 0px;
+}
+
+.linked-in h2, p {
+    color: #484747;
+}
+
+.linked-in p {
+    line-height: 2;
+}
+
+.linked-in a {
+    background-color: #0e76a8;
+    color: #fff;  
+    padding: 18px 15px;
+    cursor: pointer;
+    outline:3px #0e76a8 solid;
+     outline-offset: -3px;
+  border-radius: 5px;
+   display: inline-block;
+  max-width: 500px;
+  transition: 400ms;
+}
+
+.linked-in a:hover {
+  background-color: transparent;
+  color: #0e76a8;
+}
+
+/* ===============================
+   FEEDBACK SECTION
+=============================== */
+.feedback-section {
+  background: #f7fbfc;
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 3px solid #A1C5DA;
+  margin-top: 80px;
+}
+
+.feedback-section h2 {
+  color: #484747;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.feedback-section p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #484747;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.feedback-form button {
+  background-color: #A1C5DA;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feedback-form button:hover {
+  background-color: #8ab8d1;
 }
