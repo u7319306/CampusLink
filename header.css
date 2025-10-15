@@ -15,10 +15,11 @@ h1 {
   gap: 20px;                     /* Adds space between CampusLink and the owl */
   padding: 20px;
   background: #A1C5DA;           /* Light blue background color */
+  border-bottom: 4px solid #9b9b9b;
 }
 
 .header img{
-    width: 97px;
+    width: 95px;
     height: 130px;
     padding-left: 5px;
 }

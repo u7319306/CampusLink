@@ -1,6 +1,6 @@
 .careers{
     color: #484747;
-    margin-left: 20px;
+    text-align: center;
 
 }
 
@@ -12,7 +12,11 @@
   text-align: center; 
 }
 
-.job-types{
+/* ===============================
+   JOB CLASSIFICATION SECTION
+=============================== */
+
+#job-types{
     position: relative; 
     margin: 40px auto; 
     max-width: 1300px; 
@@ -23,9 +27,13 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.job-types p, .job-types h3, .job-types h2{
+#job-types p, #job-types h3, #job-types h2{
     color: #484747;  
 }
+
+/* ===============================
+   ICON INFO SECTION
+=============================== */
 
 .icon-container img {
       height: 200px;
@@ -37,7 +45,7 @@
 display: flex;                  /* Enables horizontal layout */
   justify-content: center;        /* Centers all icons horizontally */
   align-items: flex-start;        /* Aligns them along the top */
-  gap: 40px;                      /* Adds spacing between each icon group */
+  gap: 20px;                      /* Adds spacing between each icon group */
   text-align: center;             /* Centers text under each icon */
   flex-wrap: wrap;                /* ✅ Allows wrapping on smaller screens */
   margin-top: 40px;
@@ -57,8 +65,12 @@ display: flex;                  /* Enables horizontal layout */
   color: #484747;
 }
 
+/* ===============================
+   JOB TYPES SECTION
+=============================== */
+
 .other-jobs p {
-    margin-left: 20px;
+    text-align: center;
     color: #484747;
     font-size: 1.3em;
 }
@@ -78,10 +90,6 @@ display: flex;                  /* Enables horizontal layout */
     width: 100px;
 }
 
-.img-container h2, .img-container p {
-    color: #484747;
-}
-
 .internship, .grad, .cadet, .vacation {
     border: 2px solid #484747;   /* sets border thickness, style, and color */
     border-radius: 8px;          /* smooth rounded corners */
@@ -89,15 +97,35 @@ display: flex;                  /* Enables horizontal layout */
     text-align: center;          /* keep text and image centered */
     width: 320px;                /* consistent width for all boxes */
     margin: 20px auto;           /* center horizontally with spacing */
-    background-color: white;     /* optional: make background stand out */
     box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* optional subtle shadow */
+}
+
+.internship h2 {
+    color: #006633;
+}
+
+.grad h2 {
+    color: #D189EB;
+}
+
+.cadet h2 {
+    color: #ffb266;
+}
+
+.vacation h2 {
+    color: #009999;
 }
 
 .img-container p {
     font-size: 1em;
     line-height: 1.3;
+    color: #484747;
 
 }
+
+/* ===============================
+   JOB SITES LINKS SECTION
+=============================== */
 
 .job-sites {
   text-align: center;
@@ -147,6 +175,10 @@ display: flex;                  /* Enables horizontal layout */
   padding: 24px;                                /* Space around the grid area */
 }
 
+/* ===============================
+   LINKEDIN SECTION
+=============================== */
+
 .linked-in{
     text-align: center;
 }
@@ -184,28 +216,32 @@ display: flex;                  /* Enables horizontal layout */
 }
 
 /* ===============================
-   FEEDBACK SECTION
+   QUERY SECTION
 =============================== */
-.feedback-section {
-  background: #f7fbfc;
+#query-section {
+    background: #fdfdf4;
   padding: 50px 20px;
   text-align: center;
-  border-top: 3px solid #A1C5DA;
   margin-top: 80px;
+  border: 3px solid #484747;  /* creates a visible border */
+  border-radius: 15px;        /* rounds the corners */
+  max-width: 1000px;           /* keeps it nicely centered */
+  margin: 80px auto;          /* centers horizontally */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* optional: subtle shadow */
 }
 
-.feedback-section h2 {
+#query-section h2 {
   color: #484747;
   font-size: 1.8rem;
   margin-bottom: 10px;
 }
 
-.feedback-section p {
+#query-section p {
   color: #555;
   margin-bottom: 20px;
 }
 
-.feedback-form {
+.query-form {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
@@ -213,23 +249,23 @@ display: flex;                  /* Enables horizontal layout */
   gap: 12px;
 }
 
-.feedback-form label {
+.query-form label {
   text-align: left;
   font-weight: 600;
   color: #484747;
 }
 
-.feedback-form input,
-.feedback-form textarea {
+.query-form input,
+.query-form textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-family: inherit;
 }
 
-.feedback-form button {
-  background-color: #A1C5DA;
-  color: #fff;
+.query-form button {
+  background-color: #fbe56c;
+  color: #484747;
   border: none;
   padding: 12px;
   border-radius: 8px;
@@ -237,6 +273,66 @@ display: flex;                  /* Enables horizontal layout */
   cursor: pointer;
 }
 
-.feedback-form button:hover {
-  background-color: #8ab8d1;
+.query-form button:hover {
+  background-color: #faeb98;
+}
+
+.seperator {
+  display: grid;                                /* Use grid layout for flexible columns */
+  grid-template-columns: 1fr 1fr;               /* Two equal halves: left/right */
+  gap: 32px;                                   /* Space between columns */
+  align-items: start;                           /* Align items to the top of each column */
+  padding: 24px;                                /* Space around the grid area */
+}
+
+.right-image {
+    text-align: center;
+    position: relative;
+}
+
+.right-image img {
+    width: 300px;
+    height: auto;
+    transform: scale(1.3);
+}
+
+.icon-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#resumes h2, #resumes p {
+    color: #484747;
+}
+
+#resumes h2 {
+    font-size: 2.5em;
+    margin-left: 80px;
+    padding: 10px;
+}
+
+#resumes img {
+    width: 300px;
+    height: auto;
+    margin-left: 110px;
+}
+
+.text-box p {
+    margin-top: 100px;
+    margin-right: 60px;
+    font-size: 1.2em;
+}
+
+.text-box {
+    text-align: center;
+}
+
+ .resume-container {
+  display: grid;                                /* Use grid layout for flexible columns */
+  grid-template-columns: 1fr 1fr;               /* Two equal halves: left/right */
+  gap: 32px;                                   /* Space between columns */
+  align-items: start;                           /* Align items to the top of each column */
+  padding: 24px;  
+  background-color: #e1f1f9;
+  border-top: 4px solid black;                          
 }
