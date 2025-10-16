@@ -1,13 +1,13 @@
 FEATURES PLAN --
 
-Home
+Home (DONE)
 - quick links
 - news bulletin
 - societies/events noticeboard
 - map nav
 - colleges quick links
 
-Job Portal
+Job Portal (DONE)
 - job portal (add links/interface to access different job websites)
 - link to anu's career portal
 - definition of job types
