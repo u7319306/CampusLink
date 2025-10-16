@@ -14,7 +14,7 @@ Job Portal
 - resume help
 - what is linked in?
 
-Assessment
+Assessment (Ayman)
 - assignment/exam help
 - templates
 - grade calculator
@@ -27,7 +27,7 @@ Resources
 - study space finder
 - collection of food/cafes on campus
 
-Student Forum
+Student Forum (Ayman)
 - add student forum (similar to reddit)
 - add group option - students can join groups
 - not exactly like social media but similar (easier for those who do not have facebook)
