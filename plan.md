@@ -20,7 +20,7 @@ Assessment (Ayman)
 - grade calculator
 - resources to find academic articles etc
 
-Resources
+Resources (Thy)
 - lost & found
 - bus/public transport schedule ('getting to anu')
 - parking at anu 
