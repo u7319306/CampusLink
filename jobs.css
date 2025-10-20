@@ -301,22 +301,6 @@ display: flex;                  /* Enables horizontal layout */
   color: inherit;
 }
 
-#resumes h2, #resumes p {
-    color: #484747;
-}
-
-#resumes h2 {
-    font-size: 2.5em;
-    margin-left: 80px;
-    padding: 10px;
-}
-
-#resumes img {
-    width: 300px;
-    height: auto;
-    margin-left: 110px;
-}
-
 .text-box p {
     margin-top: 100px;
     margin-right: 60px;
@@ -327,12 +311,96 @@ display: flex;                  /* Enables horizontal layout */
     text-align: center;
 }
 
- .resume-container {
-  display: grid;                                /* Use grid layout for flexible columns */
-  grid-template-columns: 1fr 1fr;               /* Two equal halves: left/right */
-  gap: 32px;                                   /* Space between columns */
-  align-items: start;                           /* Align items to the top of each column */
-  padding: 24px;  
-  background-color: #e1f1f9;
-  border-top: 4px solid black;                          
+/* ===============================
+   RESUME SECTION
+=============================== */
+
+#resume-section {
+  background-color: #cce6f4;       /* Light blue background */
+  padding: 80px 40px;
+  font-family: "DM Sans", sans-serif;
+  color: #484747;
+   border-top: 3px solid #d3d3d3;
+}
+
+.resume-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* responsive */
+}
+
+.resume-image img {
+  width: 280px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  background: white;
+  padding: 20px;
+}
+
+.resume-text {
+  flex: 1 1 500px;
+  text-align: left;
+}
+
+.resume-text h2 {
+  font-size: 2rem;
+  color: #484747;
+  margin-bottom: 15px;
+}
+
+.resume-text h3 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #484747;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.resume-text p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.resume-btn {
+  display: inline-block;
+  background: #484747;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: white;
+  color: #484747;
+  border: 2px solid #484747;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .resume-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .resume-text {
+    text-align: center;
+  }
+
+  .resume-image img {
+    width: 220px;
+    margin-bottom: 30px;
+  }
 }
