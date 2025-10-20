@@ -180,48 +180,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    /* ========================================
-     LOST & FOUND SECTION
-  ======================================== */
+  /* ========================================
+   LOST & FOUND SECTION
+======================================== */
 
-  const lostForm = document.getElementById('lost-found-form');
-  const lostContainer = document.getElementById('lost-found-posts');
+const lostForm = document.getElementById('lost-found-form');
+const lostContainer = document.getElementById('lost-found-posts');
 
-  if (lostForm && lostContainer) {
-    lostForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+if (lostForm && lostContainer) {
+  const noPostsMsg = lostContainer.querySelector('p'); // the “No posts yet” message
 
-      const item = document.getElementById('item-type').value;
-      const location = document.getElementById('location').value;
-      const details = document.getElementById('details').value;
-      const photo = document.getElementById('photo').files[0];
+  lostForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      // Create container for the post
-      const postDiv = document.createElement('div');
-      postDiv.className = 'lost-item';
+    const item = document.getElementById('item-type').value;
+    const location = document.getElementById('location').value;
+    const details = document.getElementById('details').value;
+    const photo = document.getElementById('photo').files[0];
 
-      // Create image element
-      const img = document.createElement('img');
-      if (photo) img.src = URL.createObjectURL(photo);
-      else img.src = 'images/placeholder.png';
+    // Remove "No posts yet" message if it exists
+    if (noPostsMsg && noPostsMsg.parentElement) {
+      noPostsMsg.remove();
+    }
 
-      // Create text content
-      const info = document.createElement('div');
-      info.innerHTML = `
-        <h4>${item}</h4>
-        <p><strong>Location:</strong> ${location}</p>
-        <p>${details}</p>
-      `;
+    // Create post container
+    const postDiv = document.createElement('div');
+    postDiv.className = 'lost-item';
 
-      // Combine
-      postDiv.appendChild(img);
-      postDiv.appendChild(info);
-      lostContainer.appendChild(postDiv);
+    // Create image
+    const img = document.createElement('img');
+    if (photo) img.src = URL.createObjectURL(photo);
+    else img.src = 'images/placeholder.png';
 
-      // Reset form
-      lostForm.reset();
-    });
+    // Create info text
+    const info = document.createElement('div');
+    info.innerHTML = `
+      <h4>${item}</h4>
+      <p><strong>Location:</strong> ${location}</p>
+      <p>${details}</p>
+    `;
+
+    // Append to container
+    postDiv.appendChild(img);
+    postDiv.appendChild(info);
+    lostContainer.appendChild(postDiv);
+
+    // Reset form
+    lostForm.reset();
+  });
   }
+
 
 
 });
