@@ -1,3 +1,5 @@
+
+
 /* =====================
    GENERAL STYLING
 ===================== */
@@ -248,4 +250,24 @@ h1 {
 
 .footer-bottom p{
   color: #fff;
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Make sure body doesn’t shift down */
+body {
+  top: 0px !important;
+}
+
+/* Also hide the popup bubble */
+.goog-tooltip, .goog-tooltip:hover {
+  display: none !important;
+}
+
+/* Hide Google’s logo and gadget icon */
+.goog-logo-link, .goog-te-gadget-icon {
+  display: none !important;
 }

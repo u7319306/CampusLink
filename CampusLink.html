@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="font-family: DM Sans;">
 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +22,8 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 
-  <!-- Language translation script -->
   <script src="events.js" defer></script>
+
 
   <title>CampusLink</title>
 </head>
@@ -32,6 +33,7 @@
        HEADER BAR
   =============================== -->
   <header class="header">
+
     <img ref="owl" src="images/owl.png" alt="owl">
     <h1 data-i18n="title">CampusLink</h1>
 
@@ -48,12 +50,15 @@
         </svg>
       </button>
 
-      <div class="lang-menu" id="langMenu" role="menu" aria-label="Languages">
-        <button role="menuitem" data-lang="en">English</button>
-        <button role="menuitem" data-lang="es">Español</button>
-        <button role="menuitem" data-lang="zh">中文</button>
-        <button role="menuitem" data-lang="fr">Français</button>
-      </div>
+
+<div class="lang-menu" id="langMenu" role="menu">
+  <button data-lang="en">English</button>
+  <button data-lang="es">Español</button>
+  <button data-lang="fr">Français</button>
+  <button data-lang="zh">中文</button>
+  <button data-lang="ja">日本語</button>
+  <button data-lang="ko">한국어</button>
+</div>
       </div>
 
       <!-- 🔍 Search bar -->
@@ -281,7 +286,7 @@
 </section>
 
 <section id="more-info">
-  <h2>Explore Campus Link</h2>
+  <h2>Explore CampusLink</h2>
 
   <div class="info-grid">
     <div class="info-column">
@@ -356,5 +361,7 @@
     <p>&copy; 2025 CampusLink | Built by ANU Students</p>
   </div>
 </footer>
+
+
 </body>
 </html>
