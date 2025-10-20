@@ -485,3 +485,48 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
     align-items: center;
   }
 }
+
+/* Different background colours for each facility card */
+.facility-card:nth-child(1) {
+  background-color: #eaf5f8; /* light blue */
+}
+
+.facility-card:nth-child(2) {
+  background-color: #f9f3e6; /* light cream */
+}
+
+.facility-card:nth-child(3) {
+  background-color: #f2f9f2; /* pale green */
+}
+
+.facility-card:nth-child(4) {
+  background-color: #f8f0f3; /* soft pink */
+}
+
+.facility-card:nth-child(5) {
+  background-color: #f3f0f8; /* lavender */
+}
+
+.facility-card:nth-child(6) {
+  background-color: #f9f9e8; /* pale yellow */
+}
+
+.facility-card:nth-child(1):hover {
+  background-color: #d8eef3;
+}
+.facility-card:nth-child(2):hover {
+  background-color: #f6ebd4;
+}
+.facility-card:nth-child(3):hover {
+  background-color: #e1f0e1;
+}
+.facility-card:nth-child(4):hover {
+  background-color: #f3dce3;
+}
+.facility-card:nth-child(5):hover {
+  background-color: #e8e4f4;
+}
+.facility-card:nth-child(6):hover {
+  background-color: #f4f4d2;
+}
+
