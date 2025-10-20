@@ -445,11 +445,11 @@ h3{
 =============================== */
 #more-info {
   border-top: 4px solid #A1C5DA;
-  padding: 50px 40px;
+  padding: 40px 20px;
   text-align: center;
   font-family: "DM Sans", sans-serif;
   color: #484747;
-  background: #f9fafb;
+  background: #fffdf7;
 }
 
 #more-info h2 {

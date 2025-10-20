@@ -5,79 +5,135 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ========================================
-     i18n: TRANSLATION DICTIONARY & LANGUAGE HANDLING
-  ======================================== */
+// ===============================================
+// CampusLink Automatic Translator (Google Cloud)
+// ===============================================
 
-  // Define supported translations for different languages
-  const translations = {
-    en: { title: "CampusLink", quickLinks: "Quick Links", news: "News" },
-    es: { title: "CampusEnlace", quickLinks: "Accesos rápidos", news: "Noticias" },
-    zh: { title: "校园链接", quickLinks: "快捷链接", news: "公告" },
-    fr: { title: "CampusLien", quickLinks: "Liens rapides", news: "Actualités" }
-  };
+// Replace this with your own Google Cloud API key
+const GOOGLE_API_KEY = "AIzaSyBQ-w7x6MGETNMLpJ_6C6dl717l75k5DWY";
 
-  /**
-   * Apply a given language to the interface
-   * @param {string} lang - Language code (e.g., "en", "es", "zh", "fr")
-   */
-  function applyLanguage(lang) {
-    const dict = translations[lang] || translations.en;  // fallback to English
-    document.documentElement.lang = lang;
+// Supported languages and their labels
+const SUPPORTED_LANGS = {
+  en: "English",
+  es: "Español",
+  fr: "Français",
+  zh: "中文",
+  ja: "日本語",
+  ko: "한국어",
+  vi: "Tiếng Việt"
+};
 
-    // Check if the language is Right-To-Left (e.g. Arabic, Hebrew)
-    const rtlLangs = ["ar", "he", "fa", "ur"];
-    document.documentElement.dir = rtlLangs.includes(lang) ? "rtl" : "ltr";
-
-    // Replace all text marked with data-i18n attributes
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      const key = el.dataset.i18n;
-      if (dict[key]) el.textContent = dict[key];
-    });
-
-    // Save selected language for next visit
-    localStorage.setItem("lang", lang);
-  }
-
-  // Detect browser language or use saved preference
-  const normalize = l => (l || "en").toLowerCase().split("-")[0];
-  applyLanguage(localStorage.getItem("lang") || normalize(navigator.language));
-
-  /* ========================================
-     LANGUAGE DROPDOWN MENU (UNDER GLOBE ICON)
-  ======================================== */
-
-  const langBtn  = document.getElementById("langBtn");
-  const langMenu = document.getElementById("langMenu");
-
-  // Helper functions to show/hide/toggle language menu
-  function openLang() {
-    langMenu?.classList.add("open");
-    langBtn?.setAttribute("aria-expanded", "true");
-  }
-
-  function closeLang() {
-    langMenu?.classList.remove("open");
-    langBtn?.setAttribute("aria-expanded", "false");
-  }
-
-  function toggleLang() {
-    langMenu?.classList.contains("open") ? closeLang() : openLang();
-  }
-
-  // Toggle menu when clicking the globe icon
-  langBtn?.addEventListener("click", (e) => {
-    e.stopPropagation();   // prevent document click handler from immediately closing it
-    toggleLang();
+// --- Grab all visible text nodes ---
+function getTextNodes(root = document.body) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      // Ignore scripts, styles, and empty whitespace
+      if (!node.parentElement) return NodeFilter.FILTER_REJECT;
+      const tag = node.parentElement.tagName.toLowerCase();
+      if (["script","style","noscript"].includes(tag)) return NodeFilter.FILTER_REJECT;
+      if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
   });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  return nodes;
+}
 
-  // Change language when selecting from dropdown
-  langMenu?.addEventListener("click", (e) => {
-    const item = e.target.closest("[data-lang]");
-    if (!item) return;                     // ignore clicks not on buttons
-    applyLanguage(item.dataset.lang);      // apply chosen language
-    closeLang();                           // close dropdown
+// --- Translate page text ---
+async function translatePage(targetLang) {
+  if (targetLang === "en") {
+    location.reload(); // reload original page
+    return;
+  }
+
+  const nodes = getTextNodes();
+  const originalText = nodes.map(n => n.nodeValue);
+
+  // Send text chunks in batches (API limit ~5 k chars)
+  const BATCH_SIZE = 100;
+  const translated = [];
+
+  for (let i = 0; i < originalText.length; i += BATCH_SIZE) {
+    const batch = originalText.slice(i, i + BATCH_SIZE);
+    const res = await fetch(
+      `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_API_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          q: batch,
+          target: targetLang,
+          format: "text"
+        })
+      }
+    );
+    const data = await res.json();
+    const t = data.data?.translations?.map(o => o.translatedText) || batch;
+    translated.push(...t);
+  }
+
+  // Apply translations
+  nodes.forEach((n, i) => { n.nodeValue = translated[i]; });
+
+  // Persist language
+  localStorage.setItem("preferredLang", targetLang);
+}
+
+// --- Restore saved language on load ---
+document.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("preferredLang");
+  if (saved && saved !== "en") translatePage(saved);
+});
+
+// --- Hook up your existing language buttons ---
+document.querySelectorAll("[data-lang]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    translatePage(lang);
   });
+});
+
+
+
+const langBtn  = document.getElementById("langBtn");
+const langMenu = document.getElementById("langMenu");
+
+// Open/close your custom menu (keep your existing code if you like)
+function openLang()  { langMenu?.classList.add("open");  langBtn?.setAttribute("aria-expanded","true"); }
+function closeLang() { langMenu?.classList.remove("open");langBtn?.setAttribute("aria-expanded","false"); }
+function toggleLang(){ langMenu?.classList.contains("open") ? closeLang() : openLang(); }
+
+langBtn?.addEventListener("click", (e) => { e.stopPropagation(); toggleLang(); });
+
+// Handle clicks on your buttons
+langMenu?.querySelectorAll("button[data-lang]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;                 // e.g. 'es', 'zh-CN'
+    localStorage.setItem("preferredLang", lang);   // persist
+    whenTranslateReady(() => setLangViaCombo(lang));
+    closeLang();
+  });
+});
+
+// Auto-apply saved language on load
+const savedLang = localStorage.getItem("preferredLang");
+if (savedLang && savedLang !== "en") {
+  // give Google a moment to inject the combo, then set it
+  whenTranslateReady(() => setLangViaCombo(savedLang));
+}
+
+// Close language menu if clicking outside
+document.addEventListener("click", (e) => {
+  if (langMenu?.classList.contains("open") &&
+      !langMenu.contains(e.target) && !langBtn?.contains(e.target)) {
+    closeLang();
+  }
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLang(); });
+
+
+
 
   /* ========================================
      RIGHT-SIDE NAVIGATION DRAWER (HAMBURGER MENU)
