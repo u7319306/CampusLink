@@ -156,3 +156,70 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
 .parking-info .more-info a:hover {
   text-decoration: underline;
 }
+
+#lost-found-section {
+  background: #f7fbfc;
+  border: 3px solid #A1C5DA;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 40px;
+  margin: 60px auto;
+  max-width: 900px;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+#lost-found-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+#lost-found-form input, 
+#lost-found-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+#lost-found-form button {
+  background-color: #A1C5DA;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#lost-found-form button:hover {
+  background-color: #8ab8d1;
+}
+
+#lost-found-posts {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.lost-item {
+  background: white;
+  border: 2px solid #A1C5DA;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lost-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+

@@ -201,6 +201,35 @@
   </div>
 </section>
 
+<section id="lost-found-section">
+  <h2>🔎 Lost & Found @ ANU</h2>
+  <p>If you’ve lost or found something on campus, upload a photo and share details below. Our team or others can help reunite you with your item!</p>
+
+  <!-- Upload Form -->
+  <form id="lost-found-form" enctype="multipart/form-data">
+    <label for="item-type">Item Type:</label>
+    <input type="text" id="item-type" name="item-type" placeholder="e.g. Laptop, Wallet, Keys" required>
+
+    <label for="location">Location Found / Lost:</label>
+    <input type="text" id="location" name="location" placeholder="e.g. Kambri, Hancock Library" required>
+
+    <label for="details">Description:</label>
+    <textarea id="details" name="details" placeholder="Add more details like color, date, and identifying features" required></textarea>
+
+    <label for="photo">Upload Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/*">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Display Section -->
+  <div id="lost-found-posts">
+    <h3>Recent Reports</h3>
+    <p>No posts yet — be the first to add one!</p>
+  </div>
+</section>
+
+
 
   <!-- ===============================
      FOOTER SECTION
