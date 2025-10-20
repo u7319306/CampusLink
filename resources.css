@@ -1,0 +1,532 @@
+.transport-info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;              /* Responsive for smaller screens */
+  margin: 60px auto;
+  max-width: 1200px;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+.bus-info,
+.parking-info {
+  flex: 1 1 500px;              /* Makes each box flexible */
+  background: #f7fbfc;
+  border: 3px solid #A1C5DA;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  color: #484747;
+  text-align: center;
+}
+
+/* ===============================
+   BUS INFORMATION SECTION
+=============================== */
+/* Align bus table and map side-by-side */
+.bus-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  text-align: center;
+}
+
+.bus-table-wrapper {
+  flex: 1 1 55%;  /* Table takes about 55% of width */
+}
+
+.bus-map {
+  flex: 1 1 40%;  /* Map takes about 40% of width */
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bus-map iframe {
+  width: 100%;
+  height: 529px;           /* Increased height for better visibility */
+  border: 0;
+}
+
+
+#bus-info h2 {
+  color: #484747;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#bus-info p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Table Styling */
+.bus-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto 30px;
+}
+
+.bus-table th,
+.bus-table td {
+  border: 1px solid #A1C5DA;
+  padding: 12px;
+  text-align: center;
+}
+
+.bus-table th {
+  background-color: #A1C5DA;
+  color: white;
+  font-weight: 700;
+}
+
+.bus-table td {
+  background: #ffffff;
+}
+
+/* Route Number Links */
+.bus-table a {
+  color: #0e76a8; /* LinkedIn-style blue for consistency */
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.bus-table a:hover {
+  color: #084e72;
+  text-decoration: underline;
+}
+
+/* Button Styling */
+.bus-button {
+  display: inline-block;
+  background-color: #A1C5DA;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s ease;
+margin: 30px auto 0 auto;  /* Centers horizontally */
+}
+
+.bus-button:hover {
+  background-color: #8ab8d1;
+  transform: translateY(-2px);
+}
+
+/* Titles & Text */
+.transport-section h2 {
+  color: #484747;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.transport-section p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Parking List */
+.parking-info ul {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 400px;
+  color: #484747;
+  line-height: 1.6;
+}
+
+.parking-info li {
+  margin-bottom: 8px;
+}
+
+.parking-info .more-info a {
+  color: #0e76a8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.parking-info .more-info a:hover {
+  text-decoration: underline;
+}
+
+#lost-found-section {
+  border-top: 3px solid #A1C5DA;
+  padding: 40px;
+  margin: 60px auto;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+#lost-found-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+#lost-found-form input, 
+#lost-found-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+#lost-found-form button {
+  background-color: #A1C5DA;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#lost-found-form button:hover {
+  background-color: #8ab8d1;
+}
+
+#lost-found-posts {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.lost-item {
+  background: white;
+  border: 2px solid #A1C5DA;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lost-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#study-spaces-section {
+  padding: 40px;
+  margin: 60px auto;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+#study-spaces-section h2 {
+  color: #484747;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#study-spaces-section p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Grid layout for study spaces */
+.study-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.study-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 2px solid #ffec6e;
+  border-radius: 12px;
+  width: 320px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.study-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  background: #faf0b0;
+}
+
+.study-card img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.study-card a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===============================
+   FOOD & CAFES (Alternate Style)
+=============================== */
+
+#food-cafes-alt {
+  background: #fffaf2;                     /* Warm cream background */
+  padding: 60px 20px;
+  border-top: 4px solid #484747;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+#food-cafes-alt h2 {
+  color: #484747;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#food-cafes-alt .intro {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Each row (food spot) */
+.food-spot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 1000px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.food-spot:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Reverse layout every other row */
+.food-spot.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image styling */
+.food-img {
+  flex: 1 1 45%;
+}
+
+.food-img img {
+      width: 400px;
+  height: 250px;
+  object-fit: contain;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Text area */
+.food-text {
+  flex: 1 1 55%;
+  text-align: left;
+  color: #484747;
+}
+
+.food-text h3 {
+  color: #2b2b2b;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.food-text p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.visit-btn {
+  display: inline-block;
+  background: #A1C5DA;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.visit-btn:hover {
+  background: #8ab8d1;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .food-spot, .food-spot.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+  .food-text {
+    text-align: center;
+  }
+  .food-img img {
+    height: 220px;
+  }
+}
+
+.transport-info {
+  margin-bottom: 0;  /* Removes extra space below */
+}
+
+#lost-found-section {
+    margin-bottom: 0;
+}
+
+#lost-found-section,
+#study-spaces-section,
+#food-cafes-alt {
+  margin-top: 0; /* Prevents double margin stacking */
+}
+
+/* ===============================
+   ANU SUPPORT & FACILITIES
+=============================== */
+
+#anu-facilities {
+  background: #f7fbfc;
+  border-top: 3px solid #d3d3d3;
+  padding: 60px 20px;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+#anu-facilities h2 {
+  color: #484747;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+#anu-facilities .intro {
+  color: #555;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.facility-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.facility-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  width: 280px;
+  padding: 25px;
+  border-radius: 14px;
+  border: 2px solid #d3d3d3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-decoration: none;
+  color: #484747;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  background: #e9f3f9;
+}
+
+.facility-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.facility-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #2b2b2b;
+}
+
+.facility-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+@media (max-width: 900px) {
+  .facility-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Different background colours for each facility card */
+.facility-card:nth-child(1) {
+  background-color: #eaf5f8; /* light blue */
+}
+
+.facility-card:nth-child(2) {
+  background-color: #f9f3e6; /* light cream */
+}
+
+.facility-card:nth-child(3) {
+  background-color: #f2f9f2; /* pale green */
+}
+
+.facility-card:nth-child(4) {
+  background-color: #f8f0f3; /* soft pink */
+}
+
+.facility-card:nth-child(5) {
+  background-color: #f3f0f8; /* lavender */
+}
+
+.facility-card:nth-child(6) {
+  background-color: #f9f9e8; /* pale yellow */
+}
+
+.facility-card:nth-child(1):hover {
+  background-color: #d8eef3;
+}
+.facility-card:nth-child(2):hover {
+  background-color: #f6ebd4;
+}
+.facility-card:nth-child(3):hover {
+  background-color: #e1f0e1;
+}
+.facility-card:nth-child(4):hover {
+  background-color: #f3dce3;
+}
+.facility-card:nth-child(5):hover {
+  background-color: #e8e4f4;
+}
+.facility-card:nth-child(6):hover {
+  background-color: #f4f4d2;
+}
+
