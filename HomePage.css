@@ -39,7 +39,6 @@
 
 .imgtext-container:hover {
   transform: translateY(-6px);                   /* Slight upward lift */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);    /* Add a shadow for depth */
 }
 
 /* Make images responsive */
