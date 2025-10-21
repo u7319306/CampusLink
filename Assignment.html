@@ -1,13 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="font-family: DM Sans;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assignments & Exams - CampusLink</title>
-  <meta name="description" content="Tools and resources to plan, write, and track your grades at ANU">
+
+  <!-- Google Fonts: DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="header.css">
+
+  <!-- Language translation script -->
+  <script src="events.js" defer></script>
+
+  <title>Assignments & Exams - CampusLink</title>
 </head>
+
 <body>
+  <!-- ===============================
+       HEADER BAR
+  =============================== -->
+  <header class="header">
+    <img ref="owl" src="images/owl.png" alt="owl">
+    <h1 data-i18n="title">CampusLink</h1>
+
+    <div class="actions">
+      <!-- 🌐 Language button and menu -->
+      <div class="lang-wrapper">
+        <button class="icon-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </button>
+
+        <div class="lang-menu" id="langMenu" role="menu">
+          <button data-lang="en">English</button>
+          <button data-lang="es">Español</button>
+          <button data-lang="fr">Français</button>
+          <button data-lang="zh">中文</button>
+          <button data-lang="ja">日本語</button>
+          <button data-lang="ko">한국어</button>
+          <button data-lang="hi">हिन्दी</button>
+        </div>
+      </div>
+
+      <!-- 🔍 Search bar -->
+      <div class="group">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 
+            4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 
+            3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 
+            11c0-4.135 3.365-7.5 7.5-7.5s7.5 
+            3.365 7.5 7.5-3.365 7.5-7.5 
+            7.5-7.5-3.365-7.5-7.5z"></path>
+        </svg>
+        <input placeholder="Search" type="search" class="input">
+      </div>
+
+      <!-- ☰ Hamburger menu button -->
+      <button id="menuBtn" class="hamburger icon-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===============================
+       SIDE NAVIGATION (Slide-out menu)
+  =============================== -->
+  <nav id="mySidenav" class="sidenav">
+    <a href="#" class="closebtn" aria-label="Close">&times;</a>
+    <a href="CampusLink.html">Home</a>
+    <a href="jobs.html">Job Portal</a>
+    <a href="assignment.html">Assessment Helper</a>
+    <a href="resources.html">Resources</a>
+    <a href="forum.html">Student Forum</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+
   <div class="container">
     <!-- Hero Section -->
     <section class="mb-12">
@@ -219,5 +294,22 @@
 
   <script src="shared.js"></script>
   <script src="assignment.js"></script>
+    <!-- ===============================
+     FOOTER SECTION
+=============================== -->
+  <footer class="anu-footer">
+    <div class="footer-content">
+
+      <div class="footer-left">
+        <p><strong>Acknowledgement of Country</strong></p>
+        <p>The Australian National University acknowledges, celebrates and pays our respects to the Ngunnawal and Ngambri people of the Canberra region and to all First Nations Australians on whose traditional lands we meet and work, and whose cultures are among the oldest continuing cultures in human history.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 CampusLink | Built by ANU Students</p>
+    </div>
+  </footer>
+</body>
 </body>
 </html>
