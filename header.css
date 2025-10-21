@@ -56,7 +56,7 @@ h1 {
    HAMBURGER MENU ICON
 ===================== */
 
-.hamburger {
+.header .hamburger {
   display: inline-flex;
   flex-direction: column;   /* Stack bars vertically */
   justify-content: center;  /* Center bars vertically */
@@ -173,7 +173,7 @@ h1 {
 ===================== */
 
 /* Search input container */
-.group {
+.header .group {
   display: flex;
   align-items: center;
   position: relative;  /* Needed for icon positioning */
@@ -181,7 +181,7 @@ h1 {
 }
 
 /* Search input field */
-.input {
+.header .input {
   height: 30px;
   padding: 0 1rem;
   width: 100%;
