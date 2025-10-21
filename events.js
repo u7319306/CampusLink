@@ -20,7 +20,8 @@ const SUPPORTED_LANGS = {
   zh: "中文",
   ja: "日本語",
   ko: "한국어",
-  vi: "Tiếng Việt"
+  vi: "Tiếng Việt",
+  hi: "हिन्दी" 
 };
 
 // --- Grab all visible text nodes ---
