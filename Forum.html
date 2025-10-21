@@ -1,115 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" style="font-family: DM Sans;">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Fonts: DM Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-    rel="stylesheet">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="forum.css">
-  <link rel="stylesheet" href="header.css">
-
-
-  <!-- Language translation script -->
-  <script src="events.js" defer></script>
-
-  <title>CampusLink</title>
+  <title>Student Forum - CampusLink</title>
+  <meta name="description" content="Ask questions, share tips, and connect with peers at ANU">
+  <link rel="stylesheet" href="pages.css">
 </head>
-
 <body>
-  <!-- ===============================
-       HEADER BAR
-  =============================== -->
-  <header class="header">
-    <img ref="owl" src="images/owl.png" alt="owl">
-    <h1 data-i18n="title">CampusLink</h1>
+  <div class="container">
+    <!-- Header -->
+    <section class="mb-8">
+      <div class="flex justify-between items-center gap-4" style="flex-wrap: wrap;">
+        <div>
+          <h1>Student Forum</h1>
+          <p class="text-lg text-muted">Ask questions, share tips, and connect with peers.</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-primary" onclick="openPostComposer()" id="new-post-btn"></button>
+          <button class="btn btn-outline" onclick="openCreateGroup()" id="new-group-btn"></button>
+        </div>
+      </div>
+    </section>
 
-    <!-- Header actions: Language button, Search bar, and Menu button -->
-    <div class="actions">
-
-      <!-- 🌐 Language button and menu -->
-       <div class="lang-wrapper">
-      <button class="icon-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
-          <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" fill="none" stroke="currentColor"
-            stroke-width="2" />
-        </svg>
-      </button>
-
-<div class="lang-menu" id="langMenu" role="menu">
-  <button data-lang="en">English</button>
-  <button data-lang="es">Español</button>
-  <button data-lang="fr">Français</button>
-  <button data-lang="zh">中文</button>
-  <button data-lang="ja">日本語</button>
-  <button data-lang="ko">한국어</button>
-  <button data-lang="hi">हिन्दी</button>
-
-</div>
-
+    <!-- Main Layout -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+      <!-- Mobile: Groups dropdown, Desktop: Left sidebar -->
+      <div id="groups-section" style="display: none;">
+        <div class="groups-rail card">
+          <div class="card-content">
+            <div class="flex justify-between items-center mb-4">
+              <h2 class="text-lg font-semibold">Groups</h2>
+              <button class="btn btn-sm btn-ghost" onclick="openGroupBrowser()">Browse</button>
+            </div>
+            <div id="groups-list"></div>
+          </div>
+        </div>
       </div>
 
-      <!-- 🔍 Search bar -->
-      <div class="group">
-        <!-- Magnifying glass icon -->
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-          <path
-            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 
-            4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 
-            3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 
-            11c0-4.135 3.365-7.5 7.5-7.5s7.5 
-            3.365 7.5 7.5-3.365 7.5-7.5 
-            7.5-7.5-3.365-7.5-7.5z">
-          </path>
-        </svg>
-        <!-- Search input -->
-        <input placeholder="Search" type="search" class="input">
+      <!-- Center: Thread list -->
+      <div>
+        <div class="mb-4 flex gap-3" style="flex-wrap: wrap;">
+          <div style="flex: 1; position: relative; min-width: 200px;">
+            <div id="search-icon-forum" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></div>
+            <input type="text" id="search-input" class="input" placeholder="Search posts..." style="padding-left: 2.5rem;" onkeyup="filterPosts()">
+          </div>
+          <div class="tabs-list">
+            <button class="tab active" onclick="setSort('hot')">Hot</button>
+            <button class="tab" onclick="setSort('new')">New</button>
+            <button class="tab" onclick="setSort('top')">Top</button>
+          </div>
+        </div>
+        
+        <div id="posts-container"></div>
       </div>
 
-      <!-- ☰ Hamburger menu button -->
-      <button id="menuBtn" class="hamburger icon-btn" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ===============================
-       SIDE NAVIGATION (Slide-out menu)
-  =============================== -->
-  <nav id="mySidenav" class="sidenav">
-    <a href="#" class="closebtn" aria-label="Close">&times;</a>
-    <a href="CampusLink.html">Home</a>
-    <a href="jobs.html">Job Portal</a>
-    <a href="assignment.html">Assessment Helper</a>
-    <a href="resources.html">Resources</a>
-    <a href="forum.html">Student Forum</a>
-    <a href="faq.html">FAQ</a>
-  </nav>
-
-  <!-- ===============================
-     FOOTER SECTION
-=============================== -->
-<footer class="anu-footer">
-  <div class="footer-content">
-
-    <div class="footer-left">
-      <p><strong>Acknowledgement of Country</strong></p>
-      <p>The Australian National University acknowledges, celebrates and pays our respects to the Ngunnawal and Ngambri people of the Canberra region and to all First Nations Australians on whose traditional lands we meet and work, and whose cultures are among the oldest continuing cultures in human history.</p>
+      <!-- Right rail (desktop only) - will be populated by JS -->
+      <div id="right-rail" style="display: none;"></div>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <p>&copy; 2025 CampusLink | Built by ANU Students</p>
+  <!-- Post Composer Modal -->
+  <div id="composer-modal" class="modal-overlay hidden" onclick="closeModalsOnBackdrop(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Create a Post</h2>
+      </div>
+      <div class="modal-body">
+        <div class="mb-4">
+          <label for="post-title" class="text-sm font-semibold mb-2" style="display: block;">Title</label>
+          <input type="text" id="post-title" class="input" placeholder="What's your question or topic?">
+        </div>
+        <div class="mb-4">
+          <label for="post-group" class="text-sm font-semibold mb-2" style="display: block;">Group</label>
+          <select id="post-group" class="select"></select>
+        </div>
+        <div class="mb-4">
+          <label for="post-body" class="text-sm font-semibold mb-2" style="display: block;">Body</label>
+          <div class="flex gap-2 mb-2">
+            <button class="btn btn-sm btn-ghost" onclick="formatText('**', '**')"><strong>B</strong></button>
+            <button class="btn btn-sm btn-ghost" onclick="formatText('*', '*')"><em>I</em></button>
+            <button class="btn btn-sm btn-ghost" onclick="formatText('`', '`')"><code>Code</code></button>
+          </div>
+          <textarea id="post-body" class="textarea" placeholder="Share your thoughts... (supports **bold**, *italic*, `code`)" style="min-height: 200px;"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closePostComposer()">Cancel</button>
+        <button class="btn btn-primary" onclick="submitPost()">Post</button>
+      </div>
+    </div>
   </div>
-</footer>
+
+  <!-- Create Group Modal -->
+  <div id="group-modal" class="modal-overlay hidden" onclick="closeModalsOnBackdrop(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Create a New Group</h2>
+        <p class="text-muted text-sm">Start a community around a topic that matters to you</p>
+      </div>
+      <div class="modal-body">
+        <label for="group-name" class="text-sm font-semibold mb-2" style="display: block;">Group Name</label>
+        <input type="text" id="group-name" class="input" placeholder="e.g., Physics Study Group">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeCreateGroup()">Cancel</button>
+        <button class="btn btn-primary" onclick="submitGroup()">Create Group</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group Browser Modal -->
+  <div id="browser-modal" class="modal-overlay hidden" onclick="closeModalsOnBackdrop(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2>All Groups</h2>
+      </div>
+      <div class="modal-body">
+        <div style="position: relative; margin-bottom: 1rem;">
+          <div id="browser-search-icon" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></div>
+          <input type="text" id="group-search" class="input" placeholder="Search groups..." style="padding-left: 2.5rem;" onkeyup="filterGroupBrowser()">
+        </div>
+        <div id="browser-groups" style="max-height: 400px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post View Drawer -->
+  <div id="post-drawer" class="drawer-overlay hidden" onclick="closePostView(event)">
+    <div class="drawer" onclick="event.stopPropagation()">
+      <button class="btn btn-ghost btn-icon" onclick="closePostView()" style="position: absolute; top: 1rem; right: 1rem;" id="close-drawer-btn"></button>
+      <div id="drawer-content"></div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="forum.js"></script>
 </body>
+</html>
