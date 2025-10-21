@@ -1,6 +1,6 @@
 // ===============================
 // CampusLink UI Script
-// Handles: Language translation, dropdown menu, side navigation
+// Handles: Language translation, dropdown menu, side navigation, lost & found form, campus map
 // ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // CampusLink Automatic Translator (Google Cloud)
 // ===============================================
 
-// Replace this with your own Google Cloud API key
+
 const GOOGLE_API_KEY = "AIzaSyBQ-w7x6MGETNMLpJ_6C6dl717l75k5DWY";
 
 // Supported languages and their labels
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (saved && saved !== "en") translatePage(saved);
 });
 
-// --- Hook up your existing language buttons ---
+// --- Hook up existing language buttons ---
 document.querySelectorAll("[data-lang]").forEach(btn => {
   btn.addEventListener("click", () => {
     const lang = btn.dataset.lang;
@@ -96,18 +96,17 @@ document.querySelectorAll("[data-lang]").forEach(btn => {
 });
 
 
-
 const langBtn  = document.getElementById("langBtn");
 const langMenu = document.getElementById("langMenu");
 
-// Open/close your custom menu (keep your existing code if you like)
+// Open/close your custom menu
 function openLang()  { langMenu?.classList.add("open");  langBtn?.setAttribute("aria-expanded","true"); }
 function closeLang() { langMenu?.classList.remove("open");langBtn?.setAttribute("aria-expanded","false"); }
 function toggleLang(){ langMenu?.classList.contains("open") ? closeLang() : openLang(); }
 
 langBtn?.addEventListener("click", (e) => { e.stopPropagation(); toggleLang(); });
 
-// Handle clicks on your buttons
+// Handle clicks on buttons
 langMenu?.querySelectorAll("button[data-lang]").forEach(btn => {
   btn.addEventListener("click", () => {
     const lang = btn.dataset.lang;                 // e.g. 'es', 'zh-CN'
@@ -132,8 +131,6 @@ document.addEventListener("click", (e) => {
   }
 });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLang(); });
-
-
 
 
   /* ========================================
