@@ -1,6 +1,4 @@
-# INFS3059 Major Project
-
-## CampusLink
+# INFS3059 Major Project - CampusLink
 
 ## Description
 CampusLink is an integrated, centralised directory for the Australian National University students. It allows students to access all neccessary resources and information in the the one place. 
