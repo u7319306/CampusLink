@@ -1,5 +1,3 @@
-
-
 /* =====================
    GENERAL STYLING
 ===================== */
@@ -10,21 +8,35 @@ h1 {
   color: #484747;         /* Dark grey color for text */
 }
 
-/* Header bar styling */
-.header {
-  display: flex;                 /* Enables horizontal alignment */
-  align-items: center;           /* Vertically centers text and image */
-  gap: 20px;                     /* Adds space between CampusLink and the owl */
-  padding: 20px;
-  background: #A1C5DA;           /* Light blue background color */
-  border-bottom: 4px solid #9b9b9b;
-}
-
 .header img{
     width: 95px;
     height: 130px;
     padding-left: 5px;
 }
+
+/* Remove all default page margins & paddings */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scrollbars from tiny gaps */
+}
+
+/* Force the header to stretch fully */
+.header {
+  width: 100vw;          /* full viewport width */
+  margin: 0;
+  padding: 20px;
+  background: #A1C5DA;
+  border-bottom: 4px solid #9b9b9b;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  box-sizing: border-box; /* include padding in width calc */
+}
+
 
 /* =====================
    TOP-RIGHT ACTION BUTTONS (Language + Hamburger)
