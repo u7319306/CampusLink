@@ -157,67 +157,6 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   text-decoration: underline;
 }
 
-#lost-found-section {
-  border-top: 3px solid #A1C5DA;
-  padding: 40px;
-  margin: 60px auto;
-  font-family: "DM Sans", sans-serif;
-  text-align: center;
-}
-
-#lost-found-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin: 30px auto;
-  max-width: 600px;
-}
-
-#lost-found-form input, 
-#lost-found-form textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: inherit;
-}
-
-#lost-found-form button {
-  background-color: #A1C5DA;
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#lost-found-form button:hover {
-  background-color: #8ab8d1;
-}
-
-#lost-found-posts {
-  margin-top: 40px;
-  text-align: left;
-}
-
-.lost-item {
-  background: white;
-  border: 2px solid #A1C5DA;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.lost-item img {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-  object-fit: cover;
-}
 
 #study-spaces-section {
   padding: 40px;
@@ -283,9 +222,7 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
 =============================== */
 
 #food-cafes-alt {
-  background: #fffaf2;                     /* Warm cream background */
   padding: 60px 20px;
-  border-top: 4px solid #484747;
   font-family: "DM Sans", sans-serif;
   text-align: center;
 }
@@ -311,13 +248,13 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  background: white;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   padding: 30px;
   margin: 40px auto;
   max-width: 1000px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #d3d3d3;
 }
 
 .food-spot:hover {
@@ -396,23 +333,12 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   margin-bottom: 0;  /* Removes extra space below */
 }
 
-#lost-found-section {
-    margin-bottom: 0;
-}
-
-#lost-found-section,
-#study-spaces-section,
-#food-cafes-alt {
-  margin-top: 0; /* Prevents double margin stacking */
-}
 
 /* ===============================
    ANU SUPPORT & FACILITIES
 =============================== */
 
 #anu-facilities {
-  background: #f7fbfc;
-  border-top: 3px solid #d3d3d3;
   padding: 60px 20px;
   font-family: "DM Sans", sans-serif;
   text-align: center;
