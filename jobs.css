@@ -352,17 +352,6 @@ display: flex;                  /* Enables horizontal layout */
   margin-bottom: 15px;
 }
 
-.resume-text h3 {
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #2b2b2b;
-  margin-bottom: 20px;
-  border-bottom: 3px solid #484747;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
 .resume-text p {
   line-height: 1.7;
   margin-bottom: 15px;
@@ -402,4 +391,9 @@ display: flex;                  /* Enables horizontal layout */
     width: 220px;
     margin-bottom: 30px;
   }
+}
+
+
+body {
+    background-color: #f6f8fb;
 }

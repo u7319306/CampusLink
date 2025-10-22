@@ -5,8 +5,7 @@
   gap: 40px;
   flex-wrap: wrap;              /* Responsive for smaller screens */
   margin: 60px auto;
-  max-width: 1200px;
-  font-family: "DM Sans", sans-serif;
+  max-width: 2000px;
   text-align: center;
 }
 
@@ -70,7 +69,6 @@
 .bus-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 auto 30px;
 }
 
 .bus-table th,
@@ -92,7 +90,7 @@
 
 /* Route Number Links */
 .bus-table a {
-  color: #0e76a8; /* LinkedIn-style blue for consistency */
+  color: #0e76a8; 
   font-weight: bold;
   text-decoration: none;
   transition: 0.2s ease;
@@ -113,13 +111,14 @@
   border-radius: 8px;
   font-weight: 600;
   transition: 0.3s ease;
-margin: 30px auto 0 auto;  /* Centers horizontally */
+margin: 0 auto 0 auto;  /* Centers horizontally */
 }
 
 .bus-button:hover {
   background-color: #8ab8d1;
   transform: translateY(-2px);
 }
+
 
 /* Titles & Text */
 .transport-section h2 {
@@ -132,6 +131,13 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   line-height: 1.6;
   color: #555;
   margin-bottom: 20px;
+}
+
+.parking-info {
+    margin-top: 40px;
+      max-width: 1200px;
+      text-align: center;
+        margin: 60px auto;
 }
 
 /* Parking List */
@@ -159,8 +165,9 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
 
 
 #study-spaces-section {
-  padding: 40px;
-  margin: 60px auto;
+  padding: 5px;
+  margin-top: 60px;
+  margin-bottom: 0px;
   font-family: "DM Sans", sans-serif;
   text-align: center;
 }
@@ -190,9 +197,9 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   text-decoration: none;
   color: inherit;
   background: #fff;
-  border: 2px solid #ffec6e;
+  border: 2px solid #d3d3d3;
   border-radius: 12px;
-  width: 320px;
+  width: 400px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -201,7 +208,7 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
 .study-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  background: #faf0b0;
+  background: #f1f1f1;
 }
 
 .study-card img {
@@ -221,8 +228,9 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
    FOOD & CAFES (Alternate Style)
 =============================== */
 
+
 #food-cafes-alt {
-  padding: 60px 20px;
+  padding: 20px 20px;
   font-family: "DM Sans", sans-serif;
   text-align: center;
 }
@@ -249,7 +257,7 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   justify-content: space-between;
   gap: 40px;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.06);
   padding: 30px;
   margin: 40px auto;
   max-width: 1000px;
@@ -347,7 +355,7 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
 =============================== */
 
 #anu-facilities {
-  padding: 60px 20px;
+  padding: 30px 20px;
   font-family: "DM Sans", sans-serif;
   text-align: center;
 }
@@ -464,3 +472,134 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   background-color: #f4f4d2;
 }
 
+/* ===============================
+   STUDY SPACE TIMETABLE
+=============================== */
+#study-timetable {
+  padding: 60px 20px;
+  text-align: center;
+  width: 95%;              /* expands width across the section */
+  max-width: 1300px;       /* limits it gracefully on large screens */
+  margin: 0 auto;          /* keeps it centered */
+  font-size: 1.05rem;      /* slightly larger text for readability */
+}
+
+#study-timetable h2 {
+  color: #484747;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#study-timetable p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.timetable-wrapper {
+  overflow-x: auto;
+}
+
+.study-timetable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.study-timetable th,
+.study-timetable td {
+  border: 1px solid #A1C5DA;
+  padding: 14px;
+  text-align: center;
+}
+
+.study-timetable th {
+  background-color: #A1C5DA;
+  color: white;
+  font-weight: 700;
+}
+
+.study-timetable td {
+  color: #333;
+  font-weight: 500;
+}
+
+.available {
+  background-color: #e6f4ea;
+  color: #217a33;
+  font-weight: 600;
+}
+
+.busy {
+  background-color: #fff8e1;
+  color: #b8860b;
+  font-weight: 600;
+}
+
+.closed {
+  background-color: #fce8e6;
+  color: #b22222;
+  font-weight: 600;
+}
+
+.timetable-note {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* Different colors for each study space title */
+.study-card:nth-child(1) h3 {
+  color: #8a73ad; /* Chifley Library - blue */
+}
+
+.study-card:nth-child(2) h3 {
+  color: #68997c; /* Hancock Library - green */
+}
+
+.study-card:nth-child(3) h3 {
+  color: #e29e4c; /* Kambri Study Spaces - orange */
+}
+
+/* ===============================
+   STUDENT RECOMMENDATION WITHIN FOOD CARD
+=============================== */
+
+.student-rec {
+  margin-top: 18px;
+  background: #f7fafc;
+  border-left: 4px solid #A1C5DA;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-style: italic;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.student-rec:hover {
+  background: #edf6fa;
+  transform: translateY(-2px);
+}
+
+.student-rec .quote {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.student-rec .student {
+  font-weight: 600;
+  color: #2b2b2b;
+  font-style: normal;
+  font-size: 0.95rem;
+}
+
+
+body {
+    background-color: #f6f8fb;
+}
