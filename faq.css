@@ -6,3 +6,88 @@
 .title {
     text-align: center;
 }
+
+/* ===============================
+   FAQ SECTION
+=============================== */
+.faq {
+  max-width: 900px;
+  margin: 30px auto 60px;
+  padding: 0 16px;
+  font-family: "DM Sans", sans-serif; /* matches your pages */
+  color: #484747;
+}
+
+/* Each accordion card */
+.faq-item {
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+/* Summary row (click target) */
+.faq-item > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-weight: 700;
+  color: #2b2b2b;
+}
+
+/* Remove default marker triangle */
+.faq-item > summary::-webkit-details-marker { display: none; }
+
+/* Chevron icon */
+.faq-item .chevron {
+  width: 20px; height: 20px;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  transition: transform .2s ease;
+  opacity: 0.7;
+}
+
+/* Rotate chevron when open */
+.faq-item[open] .chevron { transform: rotate(180deg); }
+
+/* Hover + focus-visible for accessibility */
+.faq-item > summary:hover { background: #f7fbfc; } 
+.faq-item > summary:focus-visible {
+  outline: 3px solid #A1C5DA; /* site accent */
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Question text */
+.faq-item .q { font-size: 1.05rem; }
+
+/* Answer body */
+.faq-item .answer {
+  border-top: 1px solid #eee;
+  padding: 14px 18px 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Links inside answers */
+.faq-item .answer a {
+  color: #0e76a8;                
+  font-weight: 600;
+  text-decoration: none;
+}
+.faq-item .answer a:hover { text-decoration: underline; }
+
+/* Small screens: keep spacing comfortable */
+@media (max-width: 600px) {
+  .faq { margin-top: 20px; }
+  .faq-item > summary { padding: 14px 16px; }
+  .faq-item .answer { padding: 12px 16px 16px; }
+}
