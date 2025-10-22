@@ -91,3 +91,8 @@
   .faq-item > summary { padding: 14px 16px; }
   .faq-item .answer { padding: 12px 16px 16px; }
 }
+
+
+body {
+    background-color: #f6f8fb;
+}
