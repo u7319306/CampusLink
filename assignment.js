@@ -14,11 +14,11 @@ document.getElementById('notes-icon').innerHTML = icon('sticky-note', 'icon');
 
 // Templates functionality
 const templates = [
-  { id: '1', name: 'Essay Template', description: 'Structured essay format with citation examples', category: 'Writing' },
-  { id: '2', name: 'Lab Report', description: 'Scientific report structure with sections', category: 'Writing' },
-  { id: '3', name: 'Presentation Slides', description: 'Professional slide deck template', category: 'Presentations' },
-  { id: '4', name: 'Study Planner', description: 'Weekly study schedule organizer', category: 'Planning' },
-  { id: '5', name: 'Revision Schedule', description: 'Exam prep timeline tracker', category: 'Planning' }
+  { id: '1', name: 'Essay Template', description: 'Structured essay format with citation examples', category: 'Writing', docsUrl: 'https://docs.google.com/document/d/1lefEPu6Zidbh2_GdNOwboU1baSbFmfn-9pJrcSAZjvQ/edit?tab=t.0' },
+  { id: '2', name: 'Lab Report', description: 'Scientific report structure with sections', category: 'Writing', docsUrl: 'https://docs.google.com/document/d/1R4N3kGu6AV0L9JMTofMIqUcw64-0iV0Li_qHPsoJ754/edit?tab=t.0' },
+  { id: '3', name: 'Presentation Slides', description: 'Professional slide deck template', category: 'Presentations', docsUrl: 'https://workspace.google.com/intl/en_au/products/slides/' },
+  { id: '4', name: 'Study Planner', description: 'Weekly study schedule organizer', category: 'Planning', docsUrl: 'https://gdoc.io/planner-templates/' }
+  // { id: '5', name: 'Revision Schedule', description: 'Exam prep timeline tracker', category: 'Planning', docsUrl: '' }
 ];
 
 let selectedCategory = 'All';
@@ -54,7 +54,7 @@ function renderTemplates() {
         <a href="#download-${template.id}" class="btn btn-primary btn-sm" style="flex: 1; text-decoration: none;">
           ${icon('download', 'icon-sm')} Download
         </a>
-        <a href="#gdocs-${template.id}" class="btn btn-outline btn-sm" style="flex: 1; text-decoration: none;">
+        <a href="${template.docsUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex: 1; text-decoration: none;">
           ${icon('external-link', 'icon-sm')} Google Docs
         </a>
       </div>
