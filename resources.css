@@ -329,6 +329,14 @@ margin: 30px auto 0 auto;  /* Centers horizontally */
   }
 }
 
+.underline {
+  width: 800px;
+  height: 4px;
+  background-color: #A1C5DA;
+  border-radius: 2px;
+  margin: 8px auto 24px auto;
+}
+
 .transport-info {
   margin-bottom: 0;  /* Removes extra space below */
 }

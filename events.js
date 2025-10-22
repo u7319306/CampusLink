@@ -283,7 +283,109 @@ if (lostForm && lostContainer) {
     lostForm.reset();
   });
   }
+  const modal = document.getElementById('postModal');
+  const closeModalBtn = modal.querySelector('.modal-close');
 
+  const titleEl = document.getElementById('modal-title');
+  const imgEl = document.getElementById('modal-image');
+  const descEl = document.getElementById('modal-description');
+  const locEl = document.getElementById('modal-location');
+  const statusEl = document.getElementById('modal-status');
 
+  const markFoundBtn = document.getElementById('markFound');
+  const contactBtn = document.getElementById('contactPoster');
 
+  let currentItem = null; // Track which item is open
+
+  // ========== OPEN MODAL ==========
+  function openModal(item) {
+    currentItem = item;
+
+    titleEl.textContent = item.dataset.title;
+    imgEl.src = item.querySelector('img')?.src || '';
+    descEl.textContent = item.dataset.desc;
+    locEl.textContent = item.dataset.location;
+    statusEl.textContent = item.dataset.status;
+
+    // Color for Lost/Found
+    if (item.dataset.status === "Found") {
+      statusEl.style.color = "green";
+      markFoundBtn.textContent = "Already Found ✓";
+      markFoundBtn.disabled = true;
+    } else {
+      statusEl.style.color = "red";
+      markFoundBtn.textContent = "Mark as Found";
+      markFoundBtn.disabled = false;
+    }
+
+    modal.style.display = 'flex';
+  }
+
+  // ========== CLOSE MODAL ==========
+  function closeModal() {
+    modal.style.display = 'none';
+    currentItem = null;
+  }
+
+  closeModalBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // ========== CONTACT POSTER ==========
+  contactBtn.addEventListener('click', () => {
+    if (currentItem && currentItem.dataset.contact) {
+      const email = currentItem.dataset.contact;
+      window.location.href = `mailto:${email}?subject=Regarding your lost item: ${currentItem.dataset.title}`;
+    }
+  });
+
+  // ========== MARK AS FOUND ==========
+  markFoundBtn.addEventListener('click', () => {
+    if (!currentItem) return;
+
+    // Update dataset status
+    currentItem.dataset.status = "Found";
+
+    // Update modal
+    statusEl.textContent = "Found";
+    statusEl.style.color = "green";
+    markFoundBtn.textContent = "Marked as Found ✓";
+    markFoundBtn.disabled = true;
+
+    // Update the main post visually
+    const tag = currentItem.querySelector('.status-tag');
+if (tag) {
+  tag.textContent = "Found";
+  tag.classList.remove('lost');
+  tag.classList.add('found');
+}
+
+    // Optional: visually fade the post to show completion
+    currentItem.style.opacity = "0.85";
+  });
+
+  // ========== COMMENTS ==========
+  const addCommentBtn = document.getElementById('addComment');
+  const commentInput = document.getElementById('commentInput');
+  const commentList = document.getElementById('commentList');
+
+  addCommentBtn.addEventListener('click', () => {
+    const text = commentInput.value.trim();
+    if (text) {
+      const li = document.createElement('li');
+      li.textContent = text;
+      commentList.appendChild(li);
+      commentInput.value = '';
+    }
+  });
+
+  // ========== OPEN MODAL ON POST CLICK ==========
+  document.querySelectorAll('.lost-item').forEach(item => {
+    item.addEventListener('click', () => openModal(item));
+  });
 });
+
+
+
+

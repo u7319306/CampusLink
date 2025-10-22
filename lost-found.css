@@ -1,25 +1,65 @@
+/* ===============================
+   LOST & FOUND - MAIN SECTION
+=============================== */
 #lost-found-section {
-  border-top: 3px solid #A1C5DA;
-    color: #484747;
-  padding: 40px;
-  margin: 60px auto;
-  text-align: center;
+  padding: 20px 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+/* Title and subtitle styling */
+#lost-found-section h2 {
+  font-size: 3rem;
+  font-weight: 700;
+    color: #484747;
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+#lost-found-section p.subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.underline {
+  width: 1450px;
+  height: 4px;
+  background-color: #A1C5DA;
+  border-radius: 2px;
+  margin: 8px 0 24px 0; /* top/bottom spacing */
+  margin-left: 0;
+}
+
+/* ===============================
+   FORM LAYOUT (like “Create Post”)
+=============================== */
 #lost-found-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: 30px auto;
-  max-width: 600px;
+  gap: 14px;
+  width: 90%;
+  margin: 0 auto 50px auto;
+  border: 1px solid #e5e9ec;
 }
 
-#lost-found-form input, 
+#lost-found-form input,
 #lost-found-form textarea {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+#lost-found-form input:focus,
+#lost-found-form textarea:focus {
+  border-color: #A1C5DA;
+  outline: none;
 }
 
 #lost-found-form button {
@@ -30,46 +70,275 @@
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease, transform 0.15s ease;
 }
 
 #lost-found-form button:hover {
   background-color: #8ab8d1;
+  transform: translateY(-2px);
 }
 
+/* Container for form + sidebar */
+.lost-form-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;  /* form takes 2/3 width, sidebar 1/3 */
+  gap: 30px;                      /* space between them */
+  align-items: start;             /* align tops */
+  max-width: 1200px;
+  margin: 0 auto 50px auto;       /* center on page with bottom spacing */
+}
+
+.lost-sidebar {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  height: fit-content;  /* keeps it neatly aligned with form height */
+}
+
+/* Make them stack on mobile */
+@media (max-width: 900px) {
+  .lost-form-layout {
+    grid-template-columns: 1fr;   /* stack vertically */
+  }
+}
+
+
+/* ===============================
+   POSTS GRID (like forum posts)
+=============================== */
 #lost-found-posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
   margin-top: 40px;
-  text-align: left;
 }
 
+@media (max-width: 900px) {
+  #lost-found-posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual Lost Item Card */
 .lost-item {
-  background: white;
-  border: 2px solid #A1C5DA;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  padding: 20px;
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.lost-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+/* Image area */
 .lost-item img {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 220px;
   border-radius: 10px;
   object-fit: cover;
+  margin-bottom: 12px;
 }
 
-#lost-found-section {
-    margin-bottom: 0;
+/* Text area */
+.lost-item h3 {
+  font-size: 1.2rem;
+  margin: 0 0 6px;
+  color: #2b2b2b;
+  font-weight: 600;
 }
 
-#lost-found-section,
-#study-spaces-section,
-#food-cafes-alt {
-  margin-top: 0; /* Prevents double margin stacking */
+.lost-item p {
+  margin: 0 0 8px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
-#lost-found-section h2 {
-    font-size: 3em;
+/* Meta info (date, location, etc.) */
+.lost-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #777;
 }
+
+/* Tag for “Lost” / “Found” */
+.status-tag {
+  background: #A1C5DA;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* ===============================
+   SIDEBAR (optional, for “Guidelines”)
+=============================== */
+.lost-sidebar {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.lost-sidebar h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #2b2b2b;
+}
+
+.lost-sidebar ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.lost-sidebar li {
+  margin-bottom: 6px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ==== Modal Overlay ==== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: none;               /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* ==== Modal Box ==== */
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  padding: 24px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Close (X) button */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+/* ==== Modal Body ==== */
+.modal-body img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.modal-actions button {
+  flex: 1;
+  background: #A1C5DA;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.modal-actions button:hover {
+  background: #8ab8d1;
+}
+
+/* ==== Comment Section ==== */
+.modal-comments {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+}
+
+.modal-comments textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 8px;
+  font-family: inherit;
+}
+
+.modal-comments button {
+  margin-top: 8px;
+  background: #484747;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-comments button:hover {
+  background: #333;
+}
+
+/* ==== Animation ==== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.status-tag {
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Red for Lost */
+.status-tag.lost {
+  background-color: #e58a80; /* red */
+}
+
+/* Green for Found */
+.status-tag.found {
+  background-color: #89d6a9; /* green */
+}
+
+
+
+
+

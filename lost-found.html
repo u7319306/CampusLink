@@ -85,32 +85,63 @@
   </header>
 
 <section id="lost-found-section">
-  <h2>🔎 Lost & Found</h2>
-  <p>If you’ve lost or found something on campus, upload a photo and share details below. Our team or others can help reunite you with your item!</p>
+  <h2>Lost & Found</h2>
+  <div class="underline"></div>
+  <p class="subtitle">Report lost items, browse posts, and reconnect with your belongings.</p>
 
-  <!-- Upload Form -->
-  <form id="lost-found-form" enctype="multipart/form-data">
-    <label for="item-type">Item Type:</label>
-    <input type="text" id="item-type" name="item-type" placeholder="e.g. Laptop, Wallet, Keys" required>
-
-    <label for="location">Location Found / Lost:</label>
-    <input type="text" id="location" name="location" placeholder="e.g. Kambri, Hancock Library" required>
-
-    <label for="details">Description:</label>
-    <textarea id="details" name="details" placeholder="Add more details like color, date, and identifying features" required></textarea>
-
-    <label for="photo">Upload Photo:</label>
-    <input type="file" id="photo" name="photo" accept="image/*">
-
-    <button type="submit">Submit</button>
+  <div class="lost-form-layout">
+  <form id="lost-found-form">
+    <input type="text" placeholder="Item name or description" required>
+    <textarea placeholder="Describe where or when it was lost..."></textarea>
+    <input type="file" accept="image/*">
+    <button type="submit">Post Item</button>
   </form>
 
-  <!-- Display Section -->
-  <div id="lost-found-posts">
-    <h3>Recent Reports</h3>
-    <p>No posts yet — be the first to add one!</p>
+  <aside class="lost-sidebar">
+    <h3>Posting Guidelines</h3>
+    <ul>
+      <li>Be descriptive and accurate.</li>
+      <li>Do not post unrelated content.</li>
+      <li>Remove your post once the item is found.</li>
+      <li>Keep communication respectful.</li>
+    </ul>
+  </aside>
+</div>
+
+  <!-- Main Content Layout -->
+   <div id="lost-found-posts">
+<div class="lost-item"
+     data-title="Lost Wallet"
+     data-location="Near Kambri Café"
+     data-desc="Brown leather wallet with several cards inside."
+     data-status="Lost"
+     data-contact="student1@anu.edu.au">
+  <img src="images/wallet.jpg" alt="Lost Wallet">
+  <div>
+    <h4>Lost Wallet</h4>
+    <p><strong>Status:</strong> <span class="status-tag lost">Lost</span></p>
+    <p><strong>Location:</strong> Near Kambri Café</p>
+    <p>Brown leather wallet with several cards inside.</p>
   </div>
+</div>
+
+<div class="lost-item" 
+     data-title="Water Bottle"
+     data-location="Manning Clark Hall"
+     data-desc="Blue reusable water bottle with a silver lid."
+     data-status="Lost"
+     data-contact="student2@anu.edu.au">
+  <img src="images/bottle.jpg" alt="Water Bottle">
+  <div>
+    <h4>Water Bottle</h4>
+    <p><strong>Status:</strong> <span class="status-tag lost">Lost</span></p>
+    <p><strong>Location:</strong> Manning Clark Hall</p>
+    <p>Blue reusable water bottle with a silver lid.</p>
+  </div>
+</div>
+</div>
 </section>
+
   
 
   <!-- ===============================
@@ -126,6 +157,34 @@
      <a href="lost-found.html">Lost & Found</a>
     <a href="faq.html">FAQ</a>
   </nav>
+
+  <!-- Modal Overlay -->
+<div id="postModal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+
+    <div class="modal-body">
+      <h2 id="modal-title"></h2>
+      <p><strong>Status:</strong> <span id="modal-status"></span></p>
+      <img id="modal-image" src="" alt="Item image">
+      <p id="modal-description"></p>
+      <p><strong>Location:</strong> <span id="modal-location"></span></p>
+
+      <div class="modal-actions">
+        <button id="contactPoster">Contact Poster</button>
+        <button id="markFound">Mark as Found</button>
+      </div>
+
+      <div class="modal-comments">
+        <h3>Comments</h3>
+        <ul id="commentList"></ul>
+        <textarea id="commentInput" placeholder="Add a comment..."></textarea>
+        <button id="addComment">Post Comment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- ===============================
      FOOTER SECTION
