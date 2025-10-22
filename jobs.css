@@ -219,7 +219,6 @@ display: flex;                  /* Enables horizontal layout */
    QUERY SECTION
 =============================== */
 #query-section {
-    background: #fdfdf4;
   padding: 50px 20px;
   text-align: center;
   margin-top: 80px;
@@ -264,7 +263,7 @@ display: flex;                  /* Enables horizontal layout */
 }
 
 .query-form button {
-  background-color: #fbe56c;
+  background-color: #A1C5DA;
   color: #484747;
   border: none;
   padding: 12px;
@@ -274,7 +273,7 @@ display: flex;                  /* Enables horizontal layout */
 }
 
 .query-form button:hover {
-  background-color: #faeb98;
+  background-color: #d5e2ea;
 }
 
 .seperator {
@@ -316,11 +315,14 @@ display: flex;                  /* Enables horizontal layout */
 =============================== */
 
 #resume-section {
-  background-color: #cce6f4;       /* Light blue background */
-  padding: 80px 40px;
-  font-family: "DM Sans", sans-serif;
-  color: #484747;
-   border-top: 3px solid #d3d3d3;
+    position: relative; 
+    margin: 40px auto; 
+    max-width: 1350px; 
+    margin-top: 40px;
+    padding: 40px;
+  background: #c7e1ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .resume-content {
