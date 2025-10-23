@@ -13,25 +13,6 @@
 }
 
 /* ===============================
-   JOB CLASSIFICATION SECTION
-=============================== */
-
-#job-types{
-    position: relative; 
-    margin: 40px auto; 
-    max-width: 1300px; 
-    margin-top: 40px;
-    padding: 40px;
-  background: #c7e1ef;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-#job-types p, #job-types h3, #job-types h2{
-    color: #484747;  
-}
-
-/* ===============================
    ICON INFO SECTION
 =============================== */
 
@@ -69,10 +50,10 @@ display: flex;                  /* Enables horizontal layout */
    JOB TYPES SECTION
 =============================== */
 
-.other-jobs p {
+#other-jobs h2 {
     text-align: center;
     color: #484747;
-    font-size: 1.3em;
+    font-size: 1.8em;
 }
 
 .img-container {
@@ -91,30 +72,44 @@ display: flex;                  /* Enables horizontal layout */
 }
 
 .internship, .grad, .cadet, .vacation {
-    border: 2px solid #484747;   /* sets border thickness, style, and color */
-    border-radius: 8px;          /* smooth rounded corners */
     padding: 15px;               /* space between border and content */
     text-align: center;          /* keep text and image centered */
     width: 320px;                /* consistent width for all boxes */
     margin: 20px auto;           /* center horizontally with spacing */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* optional subtle shadow */
-    background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #b9bdc0;
 }
 
+.internship {
+  background-color: #f2f9f2;
+}
+
+.grad {
+  background-color: #f8f0f3;
+}
+
+.cadet{
+  background-color: #f3f0f8;
+}
+
+.vacation {
+  background-color: #f9f9e8;
+}
 .internship h2 {
-    color: #006633;
+    color: #484747;
 }
 
 .grad h2 {
-    color: #D189EB;
+    color: #484747;
 }
 
 .cadet h2 {
-    color: #ffb266;
+    color: #484747;
 }
 
 .vacation h2 {
-    color: #009999;
+    color: #484747;
 }
 
 .img-container p {
@@ -128,106 +123,139 @@ display: flex;                  /* Enables horizontal layout */
    JOB SITES LINKS SECTION
 =============================== */
 
+.left-right-contain {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ----- Left column (Job Sites) ----- */
 .job-sites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
   text-align: center;
-  margin: 10px 0;
 }
 
 .job-sites h2 {
-  color: #484747;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-/* Container for buttons */
-.job-sites {
-  display: flex;
-  flex-direction: column;               /* Stack buttons vertically */
-  align-items: center;
-  flex-wrap: wrap;                      /* Wrap buttons to new lines on small screens */
-  justify-content: center;              /* Center align all buttons */
-  gap: 12px;                            /* Space between buttons */
-}
-
-/* Individual button style */
+/* Job site buttons */
 .job-sites a {
   display: block;
-  background-color: #A1C5DA;            /* Light blue button */
-  color: #fff;                          /* White text */
-  padding: 22px 18px;
-  width: 500px;
-  border-radius: 8px;                   /* Rounded corners */
+  width: 100%;
+  max-width: 600px;
+  background: linear-gradient(145deg, #a1c5da, #8ab8d1);
+  color: white;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 16px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect */
 .job-sites a:hover {
-  background-color: #8ab8d1;            /* Slightly darker blue on hover */
-  transform: translateY(-2px);          /* Lift effect */
+  background: linear-gradient(145deg, #8bb9cc, #7aaec4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
-.left-right-contain {
-  display: grid;                                /* Use grid layout for flexible columns */
-  grid-template-columns: 1fr 1fr;               /* Two equal halves: left/right */
-  gap: 32px;                                   /* Space between columns */
-  align-items: start;                           /* Align items to the top of each column */
-  padding: 24px;                                /* Space around the grid area */
+/* ----- Right column (Resume Info) ----- */
+.embedded-resume {
+  background-color: #eaf5f8;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 60px 30px;
+  text-align: left;
+  border: 1px solid #b9bdc0;
 }
 
-/* ===============================
-   LINKEDIN SECTION
-=============================== */
+.resume-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
 
-.linked-in{
+.resume-image img {
+  width: auto;
+  height: 200px;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.resume-text {
+  flex: 1 1 400px;
+  color: #333;
+}
+
+.resume-text h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #484747;
+  margin-bottom: 12px;
+}
+
+.resume-text p {
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.resume-btn {
+  display: inline-block;
+  background-color: #484747;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background-color: #fff;
+  color: #484747;
+  border: 2px solid #484747;
+}
+
+/* ----- Responsive Adjustments ----- */
+@media (max-width: 950px) {
+  .resume-content {
+    flex-direction: column;
     text-align: center;
+  }
+
+  .resume-text {
+    text-align: center;
+  }
+
+  .resume-image img {
+    width: 200px;
+  }
 }
 
-.linked-in img {
-    width: 300px;
-    height: 150px;
-    margin: 0px;
-}
-
-.linked-in h2, p {
-    color: #484747;
-}
-
-.linked-in p {
-    line-height: 2;
-}
-
-.linked-in a {
-    background-color: #0e76a8;
-    color: #fff;  
-    padding: 18px 15px;
-    cursor: pointer;
-    outline:3px #0e76a8 solid;
-     outline-offset: -3px;
-  border-radius: 5px;
-   display: inline-block;
-  max-width: 500px;
-  transition: 400ms;
-}
-
-.linked-in a:hover {
-  background-color: transparent;
-  color: #0e76a8;
-}
 
 /* ===============================
    QUERY SECTION
 =============================== */
 #query-section {
-  padding: 50px 20px;
+  padding: 50px;
   text-align: center;
   margin-top: 80px;
-  border: 3px solid #484747;  /* creates a visible border */
-  border-radius: 15px;        /* rounds the corners */
-  max-width: 1000px;           /* keeps it nicely centered */
-  margin: 80px auto;          /* centers horizontally */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* optional: subtle shadow */
+  border-top: 1px solid #dbdbdb;  /* creates a visible border */
   background-color: #fff;
 }
 
@@ -312,90 +340,233 @@ display: flex;                  /* Enables horizontal layout */
     text-align: center;
 }
 
-/* ===============================
-   RESUME SECTION
-=============================== */
-
-#resume-section {
-    position: relative; 
-    margin: 40px auto; 
-    max-width: 1350px; 
-    margin-top: 40px;
-    padding: 40px;
-  background: #c7e1ef;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.resume-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-  flex-wrap: wrap; /* responsive */
-}
-
-.resume-image img {
-  width: 280px;
-  height: auto;
-  padding: 20px;
-}
-
-.resume-text {
-  flex: 1 1 500px;
-  text-align: left;
-}
-
-.resume-text h2 {
-  font-size: 2rem;
-  color: #484747;
-  margin-bottom: 15px;
-}
-
-.resume-text p {
-  line-height: 1.7;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  color: #333;
-}
-
-.resume-btn {
-  display: inline-block;
-  background: #484747;
-  color: white;
-  text-decoration: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.resume-btn:hover {
-  background: white;
-  color: #484747;
-  border: 2px solid #484747;
-}
-
-/* Responsive design */
-@media (max-width: 900px) {
-  .resume-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .resume-text {
-    text-align: center;
-  }
-
-  .resume-image img {
-    width: 220px;
-    margin-bottom: 30px;
-  }
-}
-
 
 body {
     background-color: #f6f8fb;
 }
+
+/* ====== Career Events Section ====== */
+.career-events {
+  padding: 60px 40px;
+  max-width: 1300px;
+  margin: 60px auto;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.career-events h2 {
+  color: #333;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.career-events .subtitle {
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+/* ====== Event Cards Container ====== */
+.event-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* ====== Event Cards ====== */
+.event-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 25px 25px 30px;
+  width: 320px;
+  text-align: left;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #d6e6ef;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== Headings & Text ====== */
+.event-card h3 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.event-card p {
+  color: #555;
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.event-card .event-desc {
+  font-size: 0.95rem;
+  margin: 12px 0;
+  color: #444;
+}
+
+/* ====== Buttons ====== */
+.register-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #a1c5da;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #87b5cb;
+  transform: scale(1.05);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 900px) {
+  .event-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-card {
+    width: 90%;
+  }
+}
+
+.underline {
+  width: 1200px;
+  height: 4px;
+  background-color: #A1C5DA;
+  border-radius: 2px;
+  margin: 40px auto 24px auto;
+}
+
+/* ====== Career Quiz Section ====== */
+.career-quiz {
+  background-color: #fff;
+  border-radius: 20px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 40px;
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.career-quiz h2 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.quiz-subtitle {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* ====== Questions ====== */
+.question {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.question label {
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.question select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #c9d9e3;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.question select:focus {
+  border-color: #a1c5da;
+  box-shadow: 0 0 5px rgba(161, 197, 218, 0.6);
+  outline: none;
+}
+
+/* ====== Submit Button ====== */
+.quiz-btn {
+  background-color: #a1c5da;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-btn:hover {
+  background-color: #8bb4ca;
+  transform: scale(1.05);
+}
+
+/* ====== Result Card ====== */
+.result-card {
+  background: #ffffff;
+  border: 1px solid #d3e6ef;
+  border-radius: 16px;
+  padding: 25px 30px;
+  margin-top: 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.result-card h3 {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.result-card p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+  .career-quiz {
+    padding: 25px;
+  }
+
+  .career-quiz h2 {
+    font-size: 1.5rem;
+  }
+
+  .quiz-btn {
+    width: 100%;
+  }
+}
+
