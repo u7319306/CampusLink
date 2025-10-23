@@ -138,6 +138,7 @@ margin: 0 auto 0 auto;  /* Centers horizontally */
       max-width: 1200px;
       text-align: center;
         margin: 60px auto;
+        background-color: #fff;
 }
 
 /* Parking List */
@@ -571,7 +572,7 @@ margin: 0 auto 0 auto;  /* Centers horizontally */
 
 .student-rec {
   margin-top: 18px;
-  background: #f7fafc;
+  background: #fff;
   border-left: 4px solid #A1C5DA;
   padding: 14px 20px;
   border-radius: 8px;
