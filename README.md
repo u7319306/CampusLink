@@ -1,7 +1,8 @@
 # INFS3059 Major Project - CampusLink
 
 ## Description
-CampusLink is an integrated, centralised directory for the Australian National University students. It allows students to access all neccessary resources and information in the the one place. 
+CampusLink is a centralized and integrated student directory made for students by students. The purpose of this directory is to combine all of ANU's resources into one place for easy navigation and convenience. 
+The directory also provides other helpful resources for students such as job information and assessment support. The idea is not to copy ANU's existing directories, but to offer one that is tailored more towards students, including international students. 
 
 ## Pages
 
@@ -14,6 +15,8 @@ Assessment Helper
 Resources
 
 Student Forum
+
+Lost & Found
 
 FAQ
 
