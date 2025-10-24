@@ -142,7 +142,7 @@ html, body {
   top: 0; right: 0;
   height: 100vh; width: 280px;    /* Full height, fixed width */
   background: #484747; color: #fff;
-  opacity: 5;                     /* (Typo-safe but usually should be 1) */
+  opacity: 1;
   padding-top: 60px;              /* Spacing from top */
   transform: translateX(100%);    /* Start off-screen to the right */
   transition: transform .35s ease;/* Smooth slide animation */
@@ -208,12 +208,12 @@ html, body {
 }
 
 /* Placeholder text styling */
-.input::placeholder {
+.header .input::placeholder {
   color: #777;  /* Muted grey placeholder text */
 }
 
 /* Magnifying glass icon inside the input box */
-.icon {
+.header .icon {
   position: absolute;
   top: 50%;                 /* Vertically center the icon */
   left: 0.8rem;             /* Slight padding from left edge */
