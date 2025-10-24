@@ -212,15 +212,15 @@ document.getElementById('target-grade').addEventListener('input', calculateGrade
 
 // Resource list
 const resources = [
-  { name: 'Peer-reviewed databases', url: '#databases' },
-  { name: 'How to read a paper', url: '#reading-guide' },
-  { name: 'Literature review guide', url: '#lit-review' },
-  { name: 'Avoiding plagiarism', url: '#plagiarism' }
+  { name: 'Peer-reviewed databases', url: 'https://anulib.anu.edu.au/find-access/e-resources-databases' },
+  { name: 'How to read a paper', url: 'https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf' },
+  { name: 'Literature review guide', url: 'https://www.anu.edu.au/students/academic-skills/research-writing/literature-reviews' },
+  { name: 'Avoiding plagiarism', url: 'https://services.anu.edu.au/learning-teaching/academic-integrity/academic-integrity-best-practice-principles-for-learners' }
 ];
 
 function renderResources() {
   const html = resources.map(r => `
-    <a href="${r.url}" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border-radius: calc(var(--radius) - 0.5rem); text-decoration: none; transition: all 0.2s;" 
+    <a href="${r.url}"  target="_blank" rel="noopener noreferrer"  style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border-radius: calc(var(--radius) - 0.5rem); text-decoration: none; transition: all 0.2s;" 
       onmouseover="this.style.background='rgba(159, 195, 214, 0.2)'" 
       onmouseout="this.style.background='transparent'">
       <span class="text-sm font-semibold" style="color: var(--text);">${r.name}</span>
