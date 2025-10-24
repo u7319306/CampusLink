@@ -38,7 +38,10 @@ function filterTemplates(category) {
 }
 
 function renderTemplates() {
-  const filtered = selectedCategory === 'All' ? templates : templates.filter(t => t.category === selectedCategory);
+  const filtered = selectedCategory === 'All'
+    ? templates
+    : templates.filter(t => t.category === selectedCategory);
+
   const html = filtered.map(template => `
     <div class="card">
       <div class="card-header">
@@ -50,16 +53,18 @@ function renderTemplates() {
       <div class="card-content">
         <p class="text-sm text-muted">${template.description}</p>
       </div>
-      <div class="card-content" style="padding-top: 0; display: flex; gap: 0.5rem;">
-        <a href="#download-${template.id}" class="btn btn-primary btn-sm" style="flex: 1; text-decoration: none;">
-          ${icon('download', 'icon-sm')} Download
-        </a>
-        <a href="${template.docsUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex: 1; text-decoration: none;">
+      <div class="card-content" style="padding-top: 0;">
+        <a href="${template.docsUrl}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn btn-primary btn-sm w-full" 
+           style="background-color: var(--brand-primary); color: white; text-decoration: none;">
           ${icon('external-link', 'icon-sm')} Google Docs
         </a>
       </div>
     </div>
   `).join('');
+
   document.getElementById('template-grid').innerHTML = html;
 }
 
