@@ -1,83 +1,105 @@
-// Forum page JavaScript
+// ===============================
+// Forum page JavaScript (fixed)
+// ===============================
 
-// Initialize icons
-document.getElementById('search-icon-forum').innerHTML = icon('search', 'icon');
-document.getElementById('browser-search-icon').innerHTML = icon('search', 'icon');
-document.getElementById('new-post-btn').innerHTML = icon('plus', 'icon-sm') + ' New Post';
-document.getElementById('new-group-btn').innerHTML = icon('users', 'icon-sm') + ' Create Group';
-document.getElementById('close-drawer-btn').innerHTML = icon('x', 'icon');
+// -------- Utilities & safe icon init --------
+document.addEventListener('DOMContentLoaded', () => {
+  const safeSet = (id, html) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  };
 
-// Data storage keys
-const GROUPS_KEY = 'forum-groups';
-const POSTS_KEY = 'forum-posts';
-const COMMENTS_KEY = 'forum-comments';
-const MEMBERSHIPS_KEY = 'forum-memberships';
-const ALIAS_KEY = 'forum-user-alias';
+  // Initialize icons (only if the element exists)
+  safeSet('search-icon-forum',  icon('search', 'icon'));
+  safeSet('browser-search-icon', icon('search', 'icon'));
+  safeSet('new-post-btn',       icon('plus', 'icon-sm')  + ' New Post');
+  safeSet('new-group-btn',      icon('users', 'icon-sm') + ' Create Group');
+  safeSet('close-drawer-btn',   icon('x', 'icon'));
+});
 
-// Default groups
+// -------- LocalStorage keys --------
+const GROUPS_KEY       = 'forum-groups';
+const POSTS_KEY        = 'forum-posts';
+const COMMENTS_KEY     = 'forum-comments';
+const MEMBERSHIPS_KEY  = 'forum-memberships';
+const ALIAS_KEY        = 'forum-user-alias';
+
+// -------- Defaults / Seed data --------
 const defaultGroups = [
-  { id: 'general', name: 'General', memberCount: 1247 },
-  { id: 'first-year', name: 'First-Year Help', memberCount: 823 },
-  { id: 'cs-it', name: 'CS & IT', memberCount: 456 },
-  { id: 'maths-stats', name: 'Maths & Stats', memberCount: 389 },
-  { id: 'international', name: 'International Students', memberCount: 612 },
-  { id: 'careers', name: 'Careers & Internships', memberCount: 534 },
-  { id: 'buy-sell', name: 'Buy/Sell/Swap', memberCount: 291 }
+  { id: 'general',        name: 'General',                   memberCount: 1247 },
+  { id: 'first-year',     name: 'First-Year Help',           memberCount: 823 },
+  { id: 'cs-it',          name: 'CS & IT',                   memberCount: 456 },
+  { id: 'maths-stats',    name: 'Maths & Stats',             memberCount: 389 },
+  { id: 'international',  name: 'International Students',    memberCount: 612 },
+  { id: 'careers',        name: 'Careers & Internships',     memberCount: 534 },
+  { id: 'buy-sell',       name: 'Buy/Sell/Swap',             memberCount: 291 }
 ];
 
-// Seed posts
 const seedPosts = [
-  { id: '1', title: 'Best study spots on campus?', body: 'Looking for quiet places to study between classes. Chifley is always packed!', groupId: 'general', author: 'Koala-173', timestamp: Date.now() - 2*60*60*1000, upvotes: 12, commentCount: 8 },
-  { id: '2', title: 'COMP1100 assignment help', body: 'Stuck on recursion in Haskell. Anyone free to explain the concept?', groupId: 'cs-it', author: 'Wombat-492', timestamp: Date.now() - 5*60*60*1000, upvotes: 24, commentCount: 15 },
-  { id: '3', title: 'Internship resume tips?', body: 'Applying for summer internships. What should I include for tech roles?', groupId: 'careers', author: 'Echidna-871', timestamp: Date.now() - 24*60*60*1000, upvotes: 31, commentCount: 22 }
+  { id: '1', title: 'Best study spots on campus?', body: 'Looking for quiet places to study between classes. Chifley is always packed!', groupId: 'general',  author: 'Koala-173',    timestamp: Date.now() - 2*60*60*1000,  upvotes: 12, commentCount: 8  },
+  { id: '2', title: 'COMP1100 assignment help',    body: 'Stuck on recursion in Haskell. Anyone free to explain the concept?',        groupId: 'cs-it',    author: 'Wombat-492',   timestamp: Date.now() - 5*60*60*1000,  upvotes: 24, commentCount: 15 },
+  { id: '3', title: 'Internship resume tips?',     body: 'Applying for summer internships. What should I include for tech roles?',    groupId: 'careers',  author: 'Echidna-871',  timestamp: Date.now() - 24*60*60*1000, upvotes: 31, commentCount: 22 }
 ];
 
 const seedComments = [
-  { id: 'c1', postId: '1', author: 'Platypus-234', body: 'Try Hancock Library level 3. Usually quiet in the mornings!', timestamp: Date.now() - 1*60*60*1000, upvotes: 5 },
-  { id: 'c2', postId: '2', author: 'Kangaroo-665', body: 'Think of recursion as a function calling itself with a smaller problem each time. Base case is key!', timestamp: Date.now() - 4*60*60*1000, upvotes: 18 }
+  { id: 'c1', postId: '1', author: 'Platypus-234', body: 'Try Hancock Library level 3. Usually quiet in the mornings!', timestamp: Date.now() - 1*60*60*1000,  upvotes: 5  },
+  { id: 'c2', postId: '2', author: 'Kangaroo-665', body: 'Think of recursion as a function calling itself with a smaller problem each time. Base case is key!', timestamp: Date.now() - 4*60*60*1000,  upvotes: 18 }
 ];
 
-// State
-let currentSort = 'hot';
+// -------- State --------
+let currentSort   = 'hot';
 let selectedGroup = 'all';
-let currentPost = null;
+let currentPost   = null;
 
-// Initialize data
+// -------- Data bootstrap --------
 function initData() {
-  if (!localStorage.getItem(GROUPS_KEY)) localStorage.setItem(GROUPS_KEY, JSON.stringify(defaultGroups));
-  if (!localStorage.getItem(POSTS_KEY)) localStorage.setItem(POSTS_KEY, JSON.stringify(seedPosts));
-  if (!localStorage.getItem(COMMENTS_KEY)) localStorage.setItem(COMMENTS_KEY, JSON.stringify(seedComments));
+  if (!localStorage.getItem(GROUPS_KEY))      localStorage.setItem(GROUPS_KEY,      JSON.stringify(defaultGroups));
+  if (!localStorage.getItem(POSTS_KEY))       localStorage.setItem(POSTS_KEY,       JSON.stringify(seedPosts));
+  if (!localStorage.getItem(COMMENTS_KEY))    localStorage.setItem(COMMENTS_KEY,    JSON.stringify(seedComments));
   if (!localStorage.getItem(MEMBERSHIPS_KEY)) localStorage.setItem(MEMBERSHIPS_KEY, JSON.stringify(['general']));
 }
 
+// -------- Header controls show/hide --------
+function toggleHeaderControls(hide) {
+  // Adjust selectors if your header markup differs.
+  const nodes = document.querySelectorAll(
+    '.header .group, .header #langBtn, .header .hamburger'
+  );
+  nodes.forEach(el => el?.classList.toggle('hidden-in-drawer', !!hide));
+}
+
+// -------- Data accessors --------
 function getGroups() {
   return JSON.parse(localStorage.getItem(GROUPS_KEY) || JSON.stringify(defaultGroups));
 }
 
 function getPosts(filters = {}) {
   let posts = JSON.parse(localStorage.getItem(POSTS_KEY) || JSON.stringify(seedPosts));
-  
+
+  // Filter by group
   if (filters.group && filters.group !== 'all') {
     posts = posts.filter(p => p.groupId === filters.group);
   }
-  
+
+  // Simple search filter
   if (filters.q) {
-    const query = filters.q.toLowerCase();
-    posts = posts.filter(p => p.title.toLowerCase().includes(query) || p.body.toLowerCase().includes(query));
+    const q = filters.q.toLowerCase();
+    posts = posts.filter(p => p.title.toLowerCase().includes(q) || p.body.toLowerCase().includes(q));
   }
-  
+
+  // Sort
   if (filters.sort === 'new') {
     posts.sort((a, b) => b.timestamp - a.timestamp);
   } else if (filters.sort === 'top') {
     posts.sort((a, b) => b.upvotes - a.upvotes);
   } else {
+    // "hot" style decay score
     posts.sort((a, b) => {
-      const scoreA = a.upvotes / (1 + (Date.now() - a.timestamp) / (1000*60*60));
-      const scoreB = b.upvotes / (1 + (Date.now() - b.timestamp) / (1000*60*60));
+      const scoreA = a.upvotes / (1 + (Date.now() - a.timestamp) / (1000 * 60 * 60));
+      const scoreB = b.upvotes / (1 + (Date.now() - b.timestamp) / (1000 * 60 * 60));
       return scoreB - scoreA;
     });
   }
-  
   return posts;
 }
 
@@ -102,17 +124,15 @@ function getMemberships() {
 
 function toggleMembership(groupId) {
   const memberships = getMemberships();
-  const index = memberships.indexOf(groupId);
-  if (index > -1) {
-    memberships.splice(index, 1);
-  } else {
-    memberships.push(groupId);
-  }
+  const idx = memberships.indexOf(groupId);
+  if (idx > -1) memberships.splice(idx, 1);
+  else memberships.push(groupId);
   localStorage.setItem(MEMBERSHIPS_KEY, JSON.stringify(memberships));
   renderGroups();
   renderGroupBrowser();
 }
 
+// -------- Mutations --------
 function addPost(post) {
   const posts = getPosts();
   const newPost = { ...post, id: Date.now().toString(), timestamp: Date.now(), upvotes: 0, commentCount: 0, saved: false };
@@ -145,15 +165,14 @@ function addComment(comment) {
   const newComment = { ...comment, id: Date.now().toString(), timestamp: Date.now(), upvotes: 0 };
   comments.push(newComment);
   localStorage.setItem(COMMENTS_KEY, JSON.stringify(comments));
-  
-  // Increment post comment count
+
+  // bump post count
   const posts = getPosts();
   const post = posts.find(p => p.id === comment.postId);
   if (post) {
     post.commentCount++;
     localStorage.setItem(POSTS_KEY, JSON.stringify(posts));
   }
-  
   return newComment;
 }
 
@@ -166,12 +185,12 @@ function addGroup(name) {
   return newGroup;
 }
 
-// Render functions
+// -------- Rendering --------
 function renderGroups() {
   const groups = getGroups();
   const memberships = getMemberships();
   const memberGroups = groups.filter(g => memberships.includes(g.id));
-  
+
   const html = `
     <button class="group-item ${selectedGroup === 'all' ? 'active' : ''}" onclick="selectGroup('all')">
       <span class="text-sm font-semibold">All Posts</span>
@@ -183,18 +202,20 @@ function renderGroups() {
       </button>
     `).join('')}
   `;
-  
   document.getElementById('groups-list').innerHTML = html;
-  
-  // Update post group select
+
+  // update composer group list
   const groupSelect = document.getElementById('post-group');
-  groupSelect.innerHTML = groups.map(g => `<option value="${g.id}">${g.name}</option>`).join('');
+  if (groupSelect) {
+    groupSelect.innerHTML = groups.map(g => `<option value="${g.id}">${g.name}</option>`).join('');
+  }
 }
 
 function renderPosts() {
-  const posts = getPosts({ group: selectedGroup, sort: currentSort, q: document.getElementById('search-input').value });
+  const searchValue = (document.getElementById('search-input')?.value || '');
+  const posts  = getPosts({ group: selectedGroup, sort: currentSort, q: searchValue });
   const groups = getGroups();
-  
+
   if (posts.length === 0) {
     document.getElementById('posts-container').innerHTML = `
       <div class="card" style="border-style: dashed;">
@@ -206,7 +227,7 @@ function renderPosts() {
     `;
     return;
   }
-  
+
   const html = posts.map(post => {
     const group = groups.find(g => g.id === post.groupId);
     return `
@@ -245,48 +266,54 @@ function renderPosts() {
       </div>
     `;
   }).join('');
-  
+
   document.getElementById('posts-container').innerHTML = html;
 }
 
 function renderGroupBrowser() {
   const groups = getGroups();
   const memberships = getMemberships();
-  const query = document.getElementById('group-search').value.toLowerCase();
-  const filtered = query ? groups.filter(g => g.name.toLowerCase().includes(query)) : groups;
-  
+  const q = (document.getElementById('group-search')?.value || '').toLowerCase();
+  const filtered = q ? groups.filter(g => g.name.toLowerCase().includes(q)) : groups;
+
   const html = filtered.map(g => {
     const isMember = memberships.includes(g.id);
     return `
-      <div class="flex items-center justify-between mb-2" style="padding: 0.75rem; border-radius: calc(var(--radius) - 0.5rem); transition: background 0.2s;" 
-        onmouseover="this.style.background='rgba(159, 195, 214, 0.2)'" 
-        onmouseout="this.style.background='transparent'">
+      <div class="flex items-center justify-between mb-2"
+           style="padding: 0.75rem; border-radius: calc(var(--radius) - 0.5rem); transition: background 0.2s;"
+           onmouseover="this.style.background='rgba(159, 195, 214, 0.2)'"
+           onmouseout="this.style.background='transparent'">
         <div style="flex: 1;">
           <p class="text-sm font-semibold">${g.name}</p>
           <p class="text-xs text-muted">${g.memberCount} members</p>
         </div>
-        <button class="btn btn-sm ${isMember ? 'btn-secondary' : 'btn-primary'}" onclick="toggleMembership('${g.id}')">
+        <button class="btn btn-sm ${isMember ? 'btn-secondary' : 'btn-primary'}"
+                onclick="toggleMembership('${g.id}')">
           ${isMember ? 'Leave' : 'Join'}
         </button>
       </div>
     `;
   }).join('');
-  
+
   document.getElementById('browser-groups').innerHTML = html;
 }
 
+// -------- Drawer / Post view --------
 function viewPost(postId) {
   const posts = getPosts();
   currentPost = posts.find(p => p.id === postId);
   if (!currentPost) return;
-  
+
+  // Hide header controls while drawer is open
+  toggleHeaderControls(true);
+
   const groups = getGroups();
   const group = groups.find(g => g.id === currentPost.groupId);
   const comments = getComments(postId);
-  
-  const topLevel = comments.filter(c => !c.parentId);
+
+  const topLevel   = comments.filter(c => !c.parentId);
   const getReplies = (parentId) => comments.filter(c => c.parentId === parentId);
-  
+
   const html = `
     <div class="mb-6">
       <div class="flex gap-3 mb-4">
@@ -315,12 +342,12 @@ function viewPost(postId) {
         </button>
       </div>
     </div>
-    
+
     <div class="mb-6">
       <textarea id="comment-input" class="textarea mb-2" placeholder="Add a comment..."></textarea>
       <button class="btn btn-sm btn-primary" onclick="submitComment()">Comment</button>
     </div>
-    
+
     <div>
       <h3 class="mb-4">Comments (${comments.length})</h3>
       <div>
@@ -363,7 +390,7 @@ function viewPost(postId) {
       </div>
     </div>
   `;
-  
+
   document.getElementById('drawer-content').innerHTML = html;
   document.getElementById('post-drawer').classList.remove('hidden');
 }
@@ -372,19 +399,20 @@ function closePostView(e) {
   if (e && e.target !== e.currentTarget) return;
   document.getElementById('post-drawer').classList.add('hidden');
   currentPost = null;
-  renderPosts(); // Refresh to show updated counts
+  toggleHeaderControls(false);   // restore header controls
+  renderPosts();
 }
 
+// -------- Comments --------
 function submitComment() {
-  const body = document.getElementById('comment-input').value.trim();
+  const body = (document.getElementById('comment-input')?.value || '').trim();
   if (!body) {
     Toast.show('Comment cannot be empty', 'error');
     return;
   }
-  
   const author = getUserAlias();
   addComment({ postId: currentPost.id, author, body });
-  viewPost(currentPost.id); // Refresh view
+  viewPost(currentPost.id); // refresh view
   Toast.show('Comment added', 'success');
 }
 
@@ -392,37 +420,45 @@ let replyToId = null;
 function replyToComment(commentId) {
   replyToId = commentId;
   const input = document.getElementById('comment-input');
-  input.placeholder = 'Write a reply...';
-  input.focus();
+  if (input) {
+    input.placeholder = 'Write a reply...';
+    input.focus();
+  }
 }
 
-// Modal functions
+// -------- Modals --------
 function openPostComposer() {
-  document.getElementById('composer-modal').classList.remove('hidden');
+  toggleHeaderControls(true);
+  document.getElementById('composer-modal')?.classList.remove('hidden');
 }
-
 function closePostComposer() {
-  document.getElementById('composer-modal').classList.add('hidden');
-  document.getElementById('post-title').value = '';
-  document.getElementById('post-body').value = '';
+  document.getElementById('composer-modal')?.classList.add('hidden');
+  const t = document.getElementById('post-title');
+  const b = document.getElementById('post-body');
+  if (t) t.value = '';
+  if (b) b.value = '';
+  toggleHeaderControls(false);
 }
 
 function openCreateGroup() {
-  document.getElementById('group-modal').classList.remove('hidden');
+  toggleHeaderControls(true);
+  document.getElementById('group-modal')?.classList.remove('hidden');
 }
-
 function closeCreateGroup() {
-  document.getElementById('group-modal').classList.add('hidden');
-  document.getElementById('group-name').value = '';
+  document.getElementById('group-modal')?.classList.add('hidden');
+  const n = document.getElementById('group-name');
+  if (n) n.value = '';
+  toggleHeaderControls(false);
 }
 
 function openGroupBrowser() {
   renderGroupBrowser();
-  document.getElementById('browser-modal').classList.remove('hidden');
+  toggleHeaderControls(true);
+  document.getElementById('browser-modal')?.classList.remove('hidden');
 }
-
 function closeGroupBrowser() {
-  document.getElementById('browser-modal').classList.add('hidden');
+  document.getElementById('browser-modal')?.classList.add('hidden');
+  toggleHeaderControls(false);
 }
 
 function closeModalsOnBackdrop(e) {
@@ -433,30 +469,28 @@ function closeModalsOnBackdrop(e) {
   }
 }
 
+// -------- Composer helpers --------
 function formatText(before, after) {
   const textarea = document.getElementById('post-body');
+  if (!textarea) return;
   const start = textarea.selectionStart;
-  const end = textarea.selectionEnd;
-  const text = textarea.value.substring(start, end);
-  const newText = textarea.value.substring(0, start) + before + text + after + textarea.value.substring(end);
+  const end   = textarea.selectionEnd;
+  const text  = textarea.value.substring(start, end);
+  const newText =
+    textarea.value.substring(0, start) + before + text + after + textarea.value.substring(end);
   textarea.value = newText;
   textarea.focus();
 }
 
+// -------- Create entities --------
 function submitPost() {
-  const title = document.getElementById('post-title').value.trim();
-  const groupId = document.getElementById('post-group').value;
-  const body = document.getElementById('post-body').value.trim();
-  
-  if (!title) {
-    Toast.show('Title is required', 'error');
-    return;
-  }
-  if (!body) {
-    Toast.show('Post body is required', 'error');
-    return;
-  }
-  
+  const title   = (document.getElementById('post-title')?.value || '').trim();
+  const groupId = (document.getElementById('post-group')?.value || '').trim();
+  const body    = (document.getElementById('post-body')?.value || '').trim();
+
+  if (!title) { Toast.show('Title is required', 'error'); return; }
+  if (!body)  { Toast.show('Post body is required', 'error'); return; }
+
   const author = getUserAlias();
   addPost({ title, groupId, body, author });
   closePostComposer();
@@ -465,63 +499,63 @@ function submitPost() {
 }
 
 function submitGroup() {
-  const name = document.getElementById('group-name').value.trim();
-  if (!name) {
-    Toast.show('Group name is required', 'error');
-    return;
-  }
-  
+  const name = (document.getElementById('group-name')?.value || '').trim();
+  if (!name) { Toast.show('Group name is required', 'error'); return; }
+
   addGroup(name);
   closeCreateGroup();
   renderGroups();
   Toast.show('Group created!', 'success');
 }
 
+// -------- Filters & sorting --------
 function selectGroup(groupId) {
   selectedGroup = groupId;
   renderGroups();
   renderPosts();
 }
 
-function setSort(sort) {
+function setSort(sort, ev) {
   currentSort = sort;
   document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-  event.target.classList.add('active');
+  // support inline onclick="setSort('new', event)"
+  if (ev && ev.target) ev.target.classList.add('active');
   renderPosts();
 }
 
-function filterPosts() {
-  renderPosts();
-}
+function filterPosts() { renderPosts(); }
+function filterGroupBrowser() { renderGroupBrowser(); }
 
-function filterGroupBrowser() {
-  renderGroupBrowser();
-}
-
-// Responsive layout
+// -------- Responsive layout --------
 function updateLayout() {
   const groupsSection = document.getElementById('groups-section');
-  const rightRail = document.getElementById('right-rail');
-  
+  const rightRail     = document.getElementById('right-rail');
+
   if (window.innerWidth >= 1024) {
-    document.querySelector('#groups-section').parentElement.style.gridTemplateColumns = '250px 1fr';
-    groupsSection.style.display = 'block';
+    const grid = document.querySelector('#groups-section')?.parentElement;
+    if (grid) {
+      grid.style.gridTemplateColumns = '250px 1fr';
+      if (groupsSection) groupsSection.style.display = 'block';
+    }
   }
-  
+
   if (window.innerWidth >= 1280) {
-    document.querySelector('#groups-section').parentElement.style.gridTemplateColumns = '250px 1fr 300px';
-    rightRail.style.display = 'block';
-    renderRightRail();
-  } else {
+    const grid = document.querySelector('#groups-section')?.parentElement;
+    if (grid) grid.style.gridTemplateColumns = '250px 1fr 300px';
+    if (rightRail) {
+      rightRail.style.display = 'block';
+      renderRightRail();
+    }
+  } else if (rightRail) {
     rightRail.style.display = 'none';
   }
 }
 
 function renderRightRail() {
-  const posts = getPosts();
-  const groups = getGroups();
+  const posts    = getPosts();
+  const groups   = getGroups();
   const topPosts = [...posts].sort((a, b) => b.upvotes - a.upvotes).slice(0, 5);
-  
+
   const html = `
     <div class="mb-6 card">
       <div class="card-header">
@@ -550,7 +584,7 @@ function renderRightRail() {
         </ul>
       </div>
     </div>
-    
+
     <div class="card">
       <div class="card-header">
         <h3 class="flex items-center gap-2">
@@ -561,7 +595,10 @@ function renderRightRail() {
         ${topPosts.map((post, i) => {
           const group = groups.find(g => g.id === post.groupId);
           return `
-            <button onclick="viewPost('${post.id}')" class="w-full text-left mb-3" style="all: unset; cursor: pointer; display: block; padding: 0.5rem; border-radius: calc(var(--radius) - 0.5rem); transition: background 0.2s;" onmouseover="this.style.background='rgba(159, 195, 214, 0.2)'" onmouseout="this.style.background='transparent'">
+            <button onclick="viewPost('${post.id}')" class="w-full text-left mb-3"
+                    style="all: unset; cursor: pointer; display: block; padding: 0.5rem; border-radius: calc(var(--radius) - 0.5rem); transition: background 0.2s;"
+                    onmouseover="this.style.background='rgba(159, 195, 214, 0.2)'"
+                    onmouseout="this.style.background='transparent'">
               <div class="flex items-start gap-2">
                 <span class="text-xs font-bold text-muted" style="margin-top: 0.125rem;">${i + 1}</span>
                 <div style="flex: 1; min-width: 0;">
@@ -575,11 +612,10 @@ function renderRightRail() {
       </div>
     </div>
   `;
-  
   document.getElementById('right-rail').innerHTML = html;
 }
 
-// Initialize
+// -------- Boot --------
 initData();
 renderGroups();
 renderPosts();
