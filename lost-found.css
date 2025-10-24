@@ -343,6 +343,18 @@ body {
 }
 
 
-
+/* Ensure Lost & Found images render visibly and consistently */
+#lost-found-posts .lost-item img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
+  filter: none !important;
+  background: #eef5fb;            /* optional: helps if PNG is very white */
+  border-radius: 10px;
+}
 
 

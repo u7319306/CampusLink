@@ -2,6 +2,10 @@
    GENERAL STYLING
 ===================== */
 
+
+.hidden-in-drawer { display: none !important; }
+
+
 /* Main title styling */
 h1 {
   font-size: 50px;        /* Large heading size */
